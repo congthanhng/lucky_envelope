@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lucky_envolope/app/presentation/blocs/envelope_set/envelope_set_bloc.dart';
 import 'package:lucky_envolope/app/presentation/components/overlays/dialogs/default_dialog.dart';
+import 'package:lucky_envolope/app/presentation/widgets/history_bs_body.dart';
 import 'package:lucky_envolope/app/presentation/widgets/widgets.dart';
 
 import 'presentation/components/overlays/draws/default_draw.dart';
@@ -146,7 +147,11 @@ class _LuckyEnvelopeAppState extends State<LuckyEnvelopeApp> {
                   message: 'Lịch sử',
                   child: InkWell(
                     borderRadius: BorderRadius.circular(6),
-                    onTap: () {},
+                    onTap: () {
+                      CustomDraws.showHistory(context: context, body: [
+                        const HistoryBSBody()
+                      ]);
+                    },
                     child: const Padding(
                         padding: EdgeInsets.symmetric(vertical: 8),
                         child: Icon(

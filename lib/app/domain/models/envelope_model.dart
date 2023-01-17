@@ -32,4 +32,5 @@ class EnvelopeModel {
           denominations: denominations ?? this.denominations,
           name: name ?? this.name,
           isWithdraw: isWithdraw ?? this.isWithdraw);
+
 }

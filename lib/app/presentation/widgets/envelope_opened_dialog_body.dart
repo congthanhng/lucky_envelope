@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lucky_envolope/app/domain/models/envelope_model.dart';
+import 'package:lucky_envolope/app/domain/models/history/history_model.dart';
+import 'package:lucky_envolope/app/presentation/blocs/draw/draw_bloc.dart';
 
 class EnvelopeOpenedDialogBody extends StatefulWidget {
   const EnvelopeOpenedDialogBody({Key? key, required this.model})
@@ -8,10 +11,19 @@ class EnvelopeOpenedDialogBody extends StatefulWidget {
   final EnvelopeModel model;
 
   @override
-  State<EnvelopeOpenedDialogBody> createState() => _EnvelopeOpenedDialogBodyState();
+  State<EnvelopeOpenedDialogBody> createState() =>
+      _EnvelopeOpenedDialogBodyState();
 }
 
 class _EnvelopeOpenedDialogBodyState extends State<EnvelopeOpenedDialogBody> {
+  final TextEditingController _controller = TextEditingController();
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,23 +38,26 @@ class _EnvelopeOpenedDialogBodyState extends State<EnvelopeOpenedDialogBody> {
             const Text(
               'Chúc mừng',
               style: TextStyle(
-                  color: Colors.white, fontSize: 38, fontWeight: FontWeight.w600),
+                  color: Colors.white,
+                  fontSize: 38,
+                  fontWeight: FontWeight.w600),
             ),
             const SizedBox(
               height: 8,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
+              children: [
                 SizedBox(
                   width: 100,
                   child: TextField(
+                    controller: _controller,
                     cursorColor: Colors.white,
                     cursorHeight: 20,
                     autofocus: true,
-                    style: TextStyle(color: Colors.white, fontSize: 24),
+                    style: const TextStyle(color: Colors.white, fontSize: 24),
                     // textAlign: TextAlign.end,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       hintText: 'Nhập tên...',
                       hintStyle: TextStyle(color: Colors.grey, fontSize: 20),
                       focusColor: Colors.white,
@@ -52,8 +67,10 @@ class _EnvelopeOpenedDialogBodyState extends State<EnvelopeOpenedDialogBody> {
                     ),
                   ),
                 ),
-                SizedBox(width: 4,),
-                Text(
+                const SizedBox(
+                  width: 4,
+                ),
+                const Text(
                   'rút được bao',
                   style: TextStyle(color: Colors.white, fontSize: 24),
                 ),
@@ -68,6 +85,10 @@ class _EnvelopeOpenedDialogBodyState extends State<EnvelopeOpenedDialogBody> {
             ),
             OutlinedButton(
               onPressed: () {
+                context.read<DrawBloc>().add(DrawSaved(HistoryModel(
+                    envelope: widget.model,
+                    peopleName: _controller.text,
+                    dateTime: DateTime.now().toString())));
                 Navigator.pop(context);
               },
               style: ButtonStyle(
@@ -76,7 +97,7 @@ class _EnvelopeOpenedDialogBodyState extends State<EnvelopeOpenedDialogBody> {
               child: const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 24.0),
                 child: Text(
-                  'Đóng',
+                  'Lưu & Đóng',
                   style: TextStyle(color: Colors.white),
                 ),
               ),
