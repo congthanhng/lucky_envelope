@@ -48,6 +48,7 @@ class _DrawEnvelopeLayoutState extends State<DrawEnvelopeLayout> {
         itemBuilder: (context, index) {
           return GestureDetector(
             onTap: () {
+              if(widget.envelopes[index].isWithdraw) return;
               setState(() {
                 if (preOpenIndex == index) {
                   preOpenIndex = -1;
@@ -64,12 +65,15 @@ class _DrawEnvelopeLayoutState extends State<DrawEnvelopeLayout> {
               child: Stack(
                 fit: StackFit.expand,
                 children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(4),
-                    child: Image.asset(
-                      imagePaths[index],
-                      width: (constrain.maxWidth / 4) - 16,
-                      fit: BoxFit.fill,
+                  Opacity(
+                    opacity: preOpenIndex == index ? 0.5 : 1,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(4),
+                      child: Image.asset(
+                        imagePaths[index],
+                        width: (constrain.maxWidth / 4) - 16,
+                        fit: BoxFit.fill,
+                      ),
                     ),
                   ),
                   Padding(
@@ -85,6 +89,10 @@ class _DrawEnvelopeLayoutState extends State<DrawEnvelopeLayout> {
                   preOpenIndex == index
                       ? GestureDetector(
                           onTap: () {
+                            setState(() {
+                              preOpenIndex = -1;
+                              widget.envelopes[index].isWithdraw = true;
+                            });
                             DefaultDialog.show(context,
                                 body: EnvelopeOpenedDialogBody(
                                   model: widget.envelopes[index],
@@ -105,6 +113,35 @@ class _DrawEnvelopeLayoutState extends State<DrawEnvelopeLayout> {
                                 child: const Text(
                                   'Mở',
                                   style: TextStyle(color: Colors.white),
+                                ),
+                              ),
+                            ),
+                          ),
+                        )
+                      : const SizedBox.shrink(),
+                  widget.envelopes[index].isWithdraw
+                      ? Opacity(
+                          opacity: 0.8,
+                          child: Container(
+                            decoration: BoxDecoration(
+                                color: Colors.grey,
+                                borderRadius: BorderRadius.circular(4)),
+                            child: Center(
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    color: Colors.grey.shade600,
+                                    shape: BoxShape.circle),
+                                child: Padding(
+                                  padding:
+                                  EdgeInsets.all(widget.envelopes.length <= 6
+                                      ? 28
+                                      : widget.envelopes.length <= 12
+                                      ? 20
+                                      : 16),
+                                  child: const Text(
+                                    'Đã rút',
+                                    style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
+                                  ),
                                 ),
                               ),
                             ),
