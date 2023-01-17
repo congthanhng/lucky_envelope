@@ -5,52 +5,108 @@ import 'package:lucky_envolope/app/domain/models/envelope_model.dart';
 
 final _rand = Random();
 
-class DrawEnvelopeLayout extends StatelessWidget {
-  const DrawEnvelopeLayout({Key? key, required this.envelopes}) : super(key: key);
+class DrawEnvelopeLayout extends StatefulWidget {
+  const DrawEnvelopeLayout({Key? key, required this.envelopes})
+      : super(key: key);
 
   final List<EnvelopeModel> envelopes;
+
+  @override
+  State<DrawEnvelopeLayout> createState() => _DrawEnvelopeLayoutState();
+}
+
+class _DrawEnvelopeLayoutState extends State<DrawEnvelopeLayout> {
+  int preOpenIndex = -1;
+
+  final List<String> imagePaths = [];
+  @override
+  void initState() {
+    for (var element in widget.envelopes) {
+      imagePaths.add('assets/images/envolopes/envolope${_rand.nextInt(12) + 1}.png');
+    }
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constrain) => GridView.builder(
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             childAspectRatio: 0.7,
-            crossAxisCount: 3,
+            crossAxisCount: widget.envelopes.length <= 6
+                ? 2
+                : widget.envelopes.length <= 12
+                    ? 3
+                    : 4,
             mainAxisSpacing: 16,
             crossAxisSpacing: 16),
         padding: const EdgeInsets.all(16),
         itemBuilder: (context, index) {
-          return Container(
-            decoration: BoxDecoration(
-                border: Border.all(color: Colors.yellow),
-                borderRadius: BorderRadius.circular(4)),
-            // clipBehavior: Clip.hardEdge,
-            child: Stack(
-              fit: StackFit.expand,
-              children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(4),
-                  child: Image.asset(
-                    'assets/images/envolopes/envolope${_rand.nextInt(12) + 1}.png',
-                    width: (constrain.maxWidth / 4) - 16,
-                    fit: BoxFit.fill,
+          return GestureDetector(
+            onTap: () {
+              setState(() {
+                if (preOpenIndex == index) {
+                  preOpenIndex = -1;
+                } else {
+                  preOpenIndex = index;
+                }
+              });
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                  border: Border.all(color: Colors.yellow),
+                  borderRadius: BorderRadius.circular(4)),
+              // clipBehavior: Clip.hardEdge,
+              child: Stack(
+                fit: StackFit.expand,
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(4),
+                    child: Image.asset(
+                      imagePaths[index],
+                      width: (constrain.maxWidth / 4) - 16,
+                      fit: BoxFit.fill,
+                    ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    '${index + 1}',
-                    style: const TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 24),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      '${index + 1}',
+                      style: const TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 24),
+                    ),
                   ),
-                )
-              ],
+                  preOpenIndex == index
+                      ? GestureDetector(
+                          onTap: () {},
+                          child: Center(
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: Colors.yellow[700]),
+                              child: Padding(
+                                padding:
+                                    EdgeInsets.all(widget.envelopes.length <= 6
+                                        ? 28
+                                        : widget.envelopes.length <= 12
+                                            ? 20
+                                            : 16),
+                                child: const Text(
+                                  'Mở',
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                              ),
+                            ),
+                          ),
+                        )
+                      : const SizedBox.shrink()
+                ],
+              ),
             ),
           );
         },
-        itemCount: 12,
+        itemCount: widget.envelopes.length,
       ),
     );
   }
