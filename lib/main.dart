@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:lucky_envolope/app/core/bloc/bloc_middleware.dart';
 import 'package:lucky_envolope/app/lucky_envelope_app.dart';
 import 'package:lucky_envolope/app/presentation/blocs/envelope_set/envelope_set_bloc.dart';
 
 void main() async {
   await Hive.initFlutter();
+  Bloc.observer = AppBlocObserver();
   runApp(const MyApp());
 }
 

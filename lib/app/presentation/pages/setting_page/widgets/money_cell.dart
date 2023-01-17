@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lucky_envolope/app/presentation/pages/setting_page/bloc/setting_bloc.dart';
 
 class MoneyCell extends StatefulWidget {
   const MoneyCell(
@@ -17,7 +19,18 @@ class MoneyCell extends StatefulWidget {
 }
 
 class _MoneyCellState extends State<MoneyCell> {
-  int _quantity = 0;
+  // EnvelopeModel? _model;
+
+  @override
+  void initState() {
+    // _model = context.read<SettingBloc>().state.envelopesData[widget.name];
+    super.initState();
+  }
+
+  void _onQuantityChanged(BuildContext context, int quantity) {
+    context.read<SettingBloc>().add(SettingEnvelopeQuantityChanged(
+        quantity: quantity, envelopeName: widget.name));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,21 +38,23 @@ class _MoneyCellState extends State<MoneyCell> {
       children: [
         Image.asset(
           widget.assetsPath,
-          width: MediaQuery.of(context).size.width / 3.5,
+          width: MediaQuery.of(context).size.width / 3.7,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             InkWell(
               onTap: () {
-                if (_quantity <= 0) {
-                  setState(() {
-                    _quantity = 0;
-                  });
+                var model = context
+                    .read<SettingBloc>()
+                    .state
+                    .envelopesData[widget.name];
+                if ((model?.quantity ?? 0) <= 0) {
+                  if ((model?.quantity ?? 0) != 0) {
+                    _onQuantityChanged(context, 0);
+                  }
                 } else {
-                  setState(() {
-                    _quantity--;
-                  });
+                  _onQuantityChanged(context, (model?.quantity ?? 0) - 1);
                 }
               },
               child: const Padding(
@@ -49,17 +64,25 @@ class _MoneyCellState extends State<MoneyCell> {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: Text(
-                '$_quantity',
-                style:
-                    const TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
+              child: BlocBuilder<SettingBloc, SettingState>(
+                builder: (context, state) {
+                  var quantity =
+                      state.envelopesData[widget.name]?.quantity ?? 0;
+                  return Text(
+                    '$quantity',
+                    style: const TextStyle(
+                        fontSize: 24, fontWeight: FontWeight.w600),
+                  );
+                },
               ),
             ),
             InkWell(
               onTap: () {
-                setState(() {
-                  _quantity++;
-                });
+                var model = context
+                    .read<SettingBloc>()
+                    .state
+                    .envelopesData[widget.name];
+                _onQuantityChanged(context, (model?.quantity ?? 0) + 1);
               },
               child: const Padding(
                 padding: EdgeInsets.all(6.0),
