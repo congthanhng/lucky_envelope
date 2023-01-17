@@ -21,7 +21,6 @@ class EnvelopeSetBloc extends Bloc<EnvelopeSetEvent, EnvelopeSetState> {
   _onFetched(EnvelopeSetFetched event, Emitter<EnvelopeSetState> emit) async {
     await _useCase.getSettingData().then(
       (value) {
-        print('Value: $value');
         emit(EnvelopeSetFetchedSuccess(data: value ?? state.data));
       },
     );
@@ -49,7 +48,6 @@ class EnvelopeSetBloc extends Bloc<EnvelopeSetEvent, EnvelopeSetState> {
   }
 
   _onSaved(EnvelopeSetSaved event, Emitter<EnvelopeSetState> emit) async {
-    print('onSAVEEEEE');
     await _useCase.saveSettingData(event.data);
   }
 

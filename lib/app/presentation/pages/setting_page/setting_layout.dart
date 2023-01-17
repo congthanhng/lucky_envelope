@@ -7,8 +7,15 @@ import 'package:lucky_envolope/app/presentation/resources/values/constants.dart'
 import 'package:lucky_envolope/app/utils/num_extension.dart';
 import 'package:lucky_envolope/gen/assets.gen.dart';
 
-class SettingLayout extends StatelessWidget {
-  SettingLayout({Key? key}) : super(key: key);
+class SettingLayout extends StatefulWidget {
+  const SettingLayout({Key? key, this.onCreated}) : super(key: key);
+  final VoidCallback? onCreated;
+
+  @override
+  State<SettingLayout> createState() => _SettingLayoutState();
+}
+
+class _SettingLayoutState extends State<SettingLayout> {
   final List<MoneyCell> cells = [
     MoneyCell(
         name: Constants.vnd_500,
@@ -51,6 +58,12 @@ class SettingLayout extends StatelessWidget {
         assetsPath: Assets.images.denominations.vnd500k.path,
         number: 500000),
   ];
+
+  @override
+  void initState() {
+    context.read<SettingBloc>().add(SettingFetched());
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -120,11 +133,28 @@ class SettingLayout extends StatelessWidget {
             ElevatedButton(
               onPressed: () {
                 var model = context.read<SettingBloc>().state.envelopesData;
+                context.read<SettingBloc>().add(SettingSaved());
                 context
                     .read<EnvelopeSetBloc>()
                     .add(EnvelopeSetGenerated(model));
+                widget.onCreated?.call();
               },
-              child: const Text('Tạo'),
+              child: const Text('Tạo', style: TextStyle(fontSize: 20),),
+            ),
+            OutlinedButton(
+              onPressed: () {
+                context.read<SettingBloc>().add(SettingReset());
+              },
+              style: ButtonStyle(
+                  side: MaterialStateProperty.all(
+                      const BorderSide(color: Colors.white))),
+              child: const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 24.0),
+                child: Text(
+                  'Thiết lập lại',
+                  style: TextStyle(color: Colors.white, fontSize: 20),
+                ),
+              ),
             )
           ],
         ),

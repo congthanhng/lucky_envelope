@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lucky_envolope/app/presentation/blocs/envelope_set/envelope_set_bloc.dart';
 import 'package:lucky_envolope/app/presentation/widgets/widgets.dart';
 
+import 'presentation/components/overlays/draws/default_draw.dart';
 import 'presentation/pages/pages.dart';
 
 class LuckyEnvelopeApp extends StatefulWidget {
@@ -31,6 +32,7 @@ class _LuckyEnvelopeAppState extends State<LuckyEnvelopeApp> {
             return const SettingPage();
           }
           return DrawEnvelopeLayout(
+            key: UniqueKey(),
             envelopes: state.data.envelopes,
           );
         },
@@ -40,7 +42,19 @@ class _LuckyEnvelopeAppState extends State<LuckyEnvelopeApp> {
         selectedItemColor: Colors.yellow[300],
         unselectedItemColor: Colors.yellow[800],
         currentIndex: 0,
-        onTap: (index) {},
+        onTap: (index) {
+          switch (index) {
+            case 1:
+              {
+                CustomDraws.showHelpDraw(
+                    context: context, body: [SettingPage(onCreated: () {
+                  Navigator.pop(context);
+                },)
+                ]);
+              }
+              break;
+          }
+        },
         items: const [
           BottomNavigationBarItem(label: 'Lì xì', icon: Icon(Icons.home)),
           BottomNavigationBarItem(

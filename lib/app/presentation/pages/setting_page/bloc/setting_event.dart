@@ -10,3 +10,8 @@ class SettingEnvelopeQuantityChanged extends SettingEvent {
   SettingEnvelopeQuantityChanged(
       {required this.envelopeName, required this.quantity});
 }
+
+class SettingSaved extends SettingEvent{}
+class SettingFetched extends SettingEvent{}
+
+class SettingReset extends SettingEvent{}
