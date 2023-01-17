@@ -47,7 +47,10 @@ class _LuckyEnvelopeAppState extends State<LuckyEnvelopeApp> {
             case 1:
               {
                 CustomDraws.showHelpDraw(
-                    context: context, body: [const SettingPage()]);
+                    context: context, body: [SettingPage(onCreated: () {
+                  Navigator.pop(context);
+                },)
+                ]);
               }
               break;
           }

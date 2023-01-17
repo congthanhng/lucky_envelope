@@ -50,7 +50,7 @@ class _DrawEnvelopeLayoutState extends State<DrawEnvelopeLayout> {
         itemBuilder: (context, index) {
           return GestureDetector(
             onTap: () {
-              if(widget.envelopes[index].isWithdraw) return;
+              if (widget.envelopes[index].isWithdraw) return;
               setState(() {
                 if (preOpenIndex == index) {
                   preOpenIndex = -1;
@@ -91,7 +91,9 @@ class _DrawEnvelopeLayoutState extends State<DrawEnvelopeLayout> {
                   preOpenIndex == index
                       ? GestureDetector(
                           onTap: () {
-                            context.read<EnvelopeSetBloc>().add(EnvelopeSetWithdrawed(index));
+                            context
+                                .read<EnvelopeSetBloc>()
+                                .add(EnvelopeSetWithdrawed(index));
                             setState(() {
                               preOpenIndex = -1;
                               widget.envelopes[index].isWithdraw = true;
@@ -135,15 +137,17 @@ class _DrawEnvelopeLayoutState extends State<DrawEnvelopeLayout> {
                                     color: Colors.grey.shade600,
                                     shape: BoxShape.circle),
                                 child: Padding(
-                                  padding:
-                                  EdgeInsets.all(widget.envelopes.length <= 6
-                                      ? 28
-                                      : widget.envelopes.length <= 12
-                                      ? 20
-                                      : 16),
+                                  padding: EdgeInsets.all(
+                                      widget.envelopes.length <= 6
+                                          ? 28
+                                          : widget.envelopes.length <= 12
+                                              ? 20
+                                              : 16),
                                   child: const Text(
                                     'Đã rút',
-                                    style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w600),
                                   ),
                                 ),
                               ),
