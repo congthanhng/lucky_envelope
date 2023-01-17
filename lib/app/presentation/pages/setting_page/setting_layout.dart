@@ -140,6 +140,21 @@ class _SettingLayoutState extends State<SettingLayout> {
                 widget.onCreated?.call();
               },
               child: const Text('Tạo', style: TextStyle(fontSize: 20),),
+            ),
+            OutlinedButton(
+              onPressed: () {
+                context.read<SettingBloc>().add(SettingReset());
+              },
+              style: ButtonStyle(
+                  side: MaterialStateProperty.all(
+                      const BorderSide(color: Colors.white))),
+              child: const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 24.0),
+                child: Text(
+                  'Thiết lập lại',
+                  style: TextStyle(color: Colors.white, fontSize: 20),
+                ),
+              ),
             )
           ],
         ),

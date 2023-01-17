@@ -13,6 +13,7 @@ class SettingBloc extends Bloc<SettingEvent, SettingState> {
     on<SettingEnvelopeQuantityChanged>(_envelopeQuantityChanged);
     on<SettingSaved>(_onSaved);
     on<SettingFetched>(_onFetched);
+    on<SettingReset>(_onReset);
   }
 
   final SettingUseCase _useCase = SettingUseCase();
@@ -38,4 +39,9 @@ class SettingBloc extends Bloc<SettingEvent, SettingState> {
       },
     );
   }
+
+  _onReset(SettingReset event, Emitter<SettingState> emit) async {
+    emit(SettingInitial());
+  }
+
 }

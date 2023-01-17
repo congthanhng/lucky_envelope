@@ -13,3 +13,5 @@ class SettingEnvelopeQuantityChanged extends SettingEvent {
 
 class SettingSaved extends SettingEvent{}
 class SettingFetched extends SettingEvent{}
+
+class SettingReset extends SettingEvent{}

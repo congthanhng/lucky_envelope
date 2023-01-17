@@ -7,7 +7,7 @@ abstract class SettingState {
   const SettingState({required this.envelopesData});
 }
 
-class SettingInitial extends SettingState {
+  class SettingInitial extends SettingState {
   SettingInitial()
       : super(envelopesData: {
           Constants.vnd_500: EnvelopeModel(
