@@ -7,8 +7,14 @@ import 'package:lucky_envolope/app/presentation/resources/values/constants.dart'
 import 'package:lucky_envolope/app/utils/num_extension.dart';
 import 'package:lucky_envolope/gen/assets.gen.dart';
 
-class SettingLayout extends StatelessWidget {
-  SettingLayout({Key? key}) : super(key: key);
+class SettingLayout extends StatefulWidget {
+  const SettingLayout({Key? key}) : super(key: key);
+
+  @override
+  State<SettingLayout> createState() => _SettingLayoutState();
+}
+
+class _SettingLayoutState extends State<SettingLayout> {
   final List<MoneyCell> cells = [
     MoneyCell(
         name: Constants.vnd_500,
@@ -51,6 +57,12 @@ class SettingLayout extends StatelessWidget {
         assetsPath: Assets.images.denominations.vnd500k.path,
         number: 500000),
   ];
+
+  @override
+  void initState() {
+    context.read<SettingBloc>().add(SettingFetched());
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -120,6 +132,7 @@ class SettingLayout extends StatelessWidget {
             ElevatedButton(
               onPressed: () {
                 var model = context.read<SettingBloc>().state.envelopesData;
+                context.read<SettingBloc>().add(SettingSaved());
                 context
                     .read<EnvelopeSetBloc>()
                     .add(EnvelopeSetGenerated(model));

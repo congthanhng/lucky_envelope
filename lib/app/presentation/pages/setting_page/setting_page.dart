@@ -16,7 +16,7 @@ class _SettingPageState extends State<SettingPage> {
   Widget build(BuildContext context) {
     return BlocProvider<SettingBloc>(
       create: (context) => SettingBloc(),
-      child: SettingLayout(),
+      child: const SettingLayout(),
     );
   }
 }
