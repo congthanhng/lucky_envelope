@@ -10,3 +10,15 @@ class EnvelopeSetGenerated extends EnvelopeSetEvent {
 
   EnvelopeSetGenerated(this.dataInput);
 }
+
+class EnvelopeSetSaved extends EnvelopeSetEvent {
+  final SettingData data;
+
+  EnvelopeSetSaved(this.data);
+}
+
+class EnvelopeSetWithdrawed extends EnvelopeSetEvent {
+  final int index;
+
+  EnvelopeSetWithdrawed(this.index);
+}

@@ -12,43 +12,43 @@ class SettingLayout extends StatelessWidget {
   final List<MoneyCell> cells = [
     MoneyCell(
         name: Constants.vnd_500,
-        assetsPath: Assets.images.money.money0.path,
+        assetsPath: Assets.images.denominations.vnd500.path,
         number: 500),
     MoneyCell(
         name: Constants.vnd_1k,
-        assetsPath: Assets.images.money.money1.path,
+        assetsPath: Assets.images.denominations.vnd1k.path,
         number: 1000),
     MoneyCell(
         name: Constants.vnd_2k,
-        assetsPath: Assets.images.money.money2.path,
+        assetsPath: Assets.images.denominations.vnd2k.path,
         number: 2000),
     MoneyCell(
         name: Constants.vnd_5k,
-        assetsPath: Assets.images.money.money3.path,
+        assetsPath: Assets.images.denominations.vnd5k.path,
         number: 5000),
     MoneyCell(
         name: Constants.vnd_10k,
-        assetsPath: Assets.images.money.money4.path,
+        assetsPath: Assets.images.denominations.vnd10k.path,
         number: 10000),
     MoneyCell(
         name: Constants.vnd_20k,
-        assetsPath: Assets.images.money.money5.path,
+        assetsPath: Assets.images.denominations.vnd20k.path,
         number: 20000),
     MoneyCell(
         name: Constants.vnd_50k,
-        assetsPath: Assets.images.money.money6.path,
+        assetsPath: Assets.images.denominations.vnd50k.path,
         number: 50000),
     MoneyCell(
         name: Constants.vnd_100k,
-        assetsPath: Assets.images.money.money7.path,
+        assetsPath: Assets.images.denominations.vnd100k.path,
         number: 100000),
     MoneyCell(
         name: Constants.vnd_200k,
-        assetsPath: Assets.images.money.money8.path,
+        assetsPath: Assets.images.denominations.vnd200k.path,
         number: 200000),
     MoneyCell(
         name: Constants.vnd_500k,
-        assetsPath: Assets.images.money.money9.path,
+        assetsPath: Assets.images.denominations.vnd500k.path,
         number: 500000),
   ];
 

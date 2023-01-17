@@ -12,8 +12,67 @@ import 'package:flutter/widgets.dart';
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  $AssetsImagesDenominationsGen get denominations =>
+      const $AssetsImagesDenominationsGen();
   $AssetsImagesEnvolopesGen get envolopes => const $AssetsImagesEnvolopesGen();
-  $AssetsImagesMoneyGen get money => const $AssetsImagesMoneyGen();
+}
+
+class $AssetsImagesDenominationsGen {
+  const $AssetsImagesDenominationsGen();
+
+  /// File path: assets/images/denominations/vnd_100k.png
+  AssetGenImage get vnd100k =>
+      const AssetGenImage('assets/images/denominations/vnd_100k.png');
+
+  /// File path: assets/images/denominations/vnd_10k.png
+  AssetGenImage get vnd10k =>
+      const AssetGenImage('assets/images/denominations/vnd_10k.png');
+
+  /// File path: assets/images/denominations/vnd_1k.png
+  AssetGenImage get vnd1k =>
+      const AssetGenImage('assets/images/denominations/vnd_1k.png');
+
+  /// File path: assets/images/denominations/vnd_200k.png
+  AssetGenImage get vnd200k =>
+      const AssetGenImage('assets/images/denominations/vnd_200k.png');
+
+  /// File path: assets/images/denominations/vnd_20k.png
+  AssetGenImage get vnd20k =>
+      const AssetGenImage('assets/images/denominations/vnd_20k.png');
+
+  /// File path: assets/images/denominations/vnd_2k.png
+  AssetGenImage get vnd2k =>
+      const AssetGenImage('assets/images/denominations/vnd_2k.png');
+
+  /// File path: assets/images/denominations/vnd_500.png
+  AssetGenImage get vnd500 =>
+      const AssetGenImage('assets/images/denominations/vnd_500.png');
+
+  /// File path: assets/images/denominations/vnd_500k.png
+  AssetGenImage get vnd500k =>
+      const AssetGenImage('assets/images/denominations/vnd_500k.png');
+
+  /// File path: assets/images/denominations/vnd_50k.png
+  AssetGenImage get vnd50k =>
+      const AssetGenImage('assets/images/denominations/vnd_50k.png');
+
+  /// File path: assets/images/denominations/vnd_5k.png
+  AssetGenImage get vnd5k =>
+      const AssetGenImage('assets/images/denominations/vnd_5k.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [
+        vnd100k,
+        vnd10k,
+        vnd1k,
+        vnd200k,
+        vnd20k,
+        vnd2k,
+        vnd500,
+        vnd500k,
+        vnd50k,
+        vnd5k
+      ];
 }
 
 class $AssetsImagesEnvolopesGen {
@@ -81,64 +140,6 @@ class $AssetsImagesEnvolopesGen {
         envolope7,
         envolope8,
         envolope9
-      ];
-}
-
-class $AssetsImagesMoneyGen {
-  const $AssetsImagesMoneyGen();
-
-  /// File path: assets/images/money/money0.png
-  AssetGenImage get money0 =>
-      const AssetGenImage('assets/images/money/money0.png');
-
-  /// File path: assets/images/money/money1.png
-  AssetGenImage get money1 =>
-      const AssetGenImage('assets/images/money/money1.png');
-
-  /// File path: assets/images/money/money2.png
-  AssetGenImage get money2 =>
-      const AssetGenImage('assets/images/money/money2.png');
-
-  /// File path: assets/images/money/money3.png
-  AssetGenImage get money3 =>
-      const AssetGenImage('assets/images/money/money3.png');
-
-  /// File path: assets/images/money/money4.png
-  AssetGenImage get money4 =>
-      const AssetGenImage('assets/images/money/money4.png');
-
-  /// File path: assets/images/money/money5.png
-  AssetGenImage get money5 =>
-      const AssetGenImage('assets/images/money/money5.png');
-
-  /// File path: assets/images/money/money6.png
-  AssetGenImage get money6 =>
-      const AssetGenImage('assets/images/money/money6.png');
-
-  /// File path: assets/images/money/money7.png
-  AssetGenImage get money7 =>
-      const AssetGenImage('assets/images/money/money7.png');
-
-  /// File path: assets/images/money/money8.png
-  AssetGenImage get money8 =>
-      const AssetGenImage('assets/images/money/money8.png');
-
-  /// File path: assets/images/money/money9.png
-  AssetGenImage get money9 =>
-      const AssetGenImage('assets/images/money/money9.png');
-
-  /// List of all assets
-  List<AssetGenImage> get values => [
-        money0,
-        money1,
-        money2,
-        money3,
-        money4,
-        money5,
-        money6,
-        money7,
-        money8,
-        money9
       ];
 }
 

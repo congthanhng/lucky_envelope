@@ -17,7 +17,7 @@ class SettingBloc extends Bloc<SettingEvent, SettingState> {
     state.envelopesData[event.envelopeName] = state
             .envelopesData[event.envelopeName]
             ?.copyWith(quantity: event.quantity) ??
-        EnvelopeModel(quantity: 0, denominations: 0);
+        EnvelopeModel(quantity: 0, denominations: 0, name: '');
     emit(SettingEnvelopeQuantityChangedSuccess(
         envelopesData: state.envelopesData));
   }
