@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:lucky_envolope/app/models/envelope_model.dart';
+import 'package:lucky_envolope/app/domain/models/envelope_model.dart';
 
 final _rand = Random();
 

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:lucky_envolope/app/lucky_envelope_app.dart';
-import 'package:lucky_envolope/app/setting_page/bloc/setting_bloc.dart';
+import 'package:lucky_envolope/app/presentation/blocs/setting/setting_bloc.dart';
 
 void main() async {
   await Hive.initFlutter();

@@ -2,9 +2,10 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:lucky_envolope/app/setting_page/bloc/setting_bloc.dart';
-import 'package:lucky_envolope/app/setting_page/setting_page.dart';
-import 'package:lucky_envolope/app/widgets/draw_layout.dart';
+import 'package:lucky_envolope/app/presentation/widgets/widgets.dart';
+import 'package:lucky_envolope/app/presentation/blocs/setting/setting_bloc.dart';
+
+import 'presentation/pages/pages.dart';
 
 
 class LuckyEnvelopeApp extends StatefulWidget {

@@ -1,5 +1,5 @@
-import 'package:lucky_envolope/app/models/envelope_model.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:lucky_envolope/app/domain/models/envelope_model.dart';
 part 'setting_data.g.dart';
 
 @JsonSerializable()

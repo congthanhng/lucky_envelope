@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
-import 'package:lucky_envolope/app/models/setting_data.dart';
-import 'package:lucky_envolope/app/repositories/setting_repository.dart';
+import 'package:lucky_envolope/app/domain/models/setting_data.dart';
+import 'package:lucky_envolope/app/domain/usecases/setting_usecase.dart';
 import 'package:meta/meta.dart';
 
 part 'setting_event.dart';
@@ -12,10 +12,10 @@ class SettingBloc extends Bloc<SettingEvent, SettingState> {
     on<SettingFetched>(_onFetched);
   }
 
-  final SettingRepository _repository = SettingRepositoryImpl();
+  final SettingUseCase _useCase = SettingUseCase();
 
   _onFetched(SettingFetched event, Emitter<SettingState> emit) async {
-    await _repository.getSettingData().then(
+    await _useCase.getSettingData().then(
       (value) {
         emit(SettingFetchedSuccess(data: value));
       },

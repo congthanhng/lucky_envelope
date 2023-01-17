@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lucky_envolope/app/setting_page/widgets/money_cell.dart';
+import 'package:lucky_envolope/app/presentation/pages/setting_page/widgets/money_cell.dart';
 
 class SettingPage extends StatefulWidget {
   const SettingPage({Key? key}) : super(key: key);

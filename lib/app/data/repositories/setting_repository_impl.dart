@@ -1,11 +1,7 @@
 import 'package:lucky_envolope/app/core/local_storage/app_local_storage.dart';
-import 'package:lucky_envolope/app/models/setting_data.dart';
-
-abstract class SettingRepository{
-  Future<SettingData?> getSettingData();
-
-  Future<bool> setSettingData(SettingData data);
-}
+import 'package:lucky_envolope/app/data/datasource/local/hive_storage.dart';
+import 'package:lucky_envolope/app/domain/models/setting_data.dart';
+import 'package:lucky_envolope/app/domain/repositories/setting_repository.dart';
 
 class SettingRepositoryImpl implements SettingRepository{
   final LocalStorage _localStorage = HiveStorage();
