@@ -4,3 +4,9 @@ part of 'envelope_set_bloc.dart';
 abstract class EnvelopeSetEvent {}
 
 class EnvelopeSetFetched extends EnvelopeSetEvent {}
+
+class EnvelopeSetGenerated extends EnvelopeSetEvent {
+  final Map<String, EnvelopeModel> dataInput;
+
+  EnvelopeSetGenerated(this.dataInput);
+}

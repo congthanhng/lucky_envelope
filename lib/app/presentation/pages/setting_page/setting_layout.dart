@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lucky_envolope/app/presentation/blocs/envelope_set/envelope_set_bloc.dart';
 import 'package:lucky_envolope/app/presentation/pages/setting_page/bloc/setting_bloc.dart';
 import 'package:lucky_envolope/app/presentation/pages/setting_page/widgets/money_cell.dart';
 import 'package:lucky_envolope/app/presentation/resources/values/constants.dart';
@@ -60,8 +61,8 @@ class SettingLayout extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Container(
-              decoration: BoxDecoration(
-                  border: Border.all(color: Colors.yellow)),
+              decoration:
+                  BoxDecoration(border: Border.all(color: Colors.yellow)),
               padding: const EdgeInsets.only(top: 16),
               child: GridView.count(
                 crossAxisCount: 2,
@@ -78,8 +79,7 @@ class SettingLayout extends StatelessWidget {
                     top: BorderSide(color: Colors.transparent),
                     bottom: BorderSide(color: Colors.yellow),
                     right: BorderSide(color: Colors.yellow),
-                    left: BorderSide(color: Colors.yellow)
-                ),
+                    left: BorderSide(color: Colors.yellow)),
               ),
               child: Column(
                 children: [
@@ -88,23 +88,26 @@ class SettingLayout extends StatelessWidget {
                   ),
                   const Center(
                       child: Text(
-                        'Tổng cộng ',
-                        style: TextStyle(fontSize: 18),
-                      )),
+                    'Tổng cộng ',
+                    style: TextStyle(fontSize: 18),
+                  )),
                   const SizedBox(
                     height: 8,
                   ),
-                  Center(
-                      child: BlocBuilder<SettingBloc, SettingState>(
-                        builder: (context, state) {
-                          var total = state.envelopesData.values.fold(0, (previousValue, element) => previousValue + element.total,);
-                          return Text(
-                            total.toMoneyWithoutDecimal(),
-                            style: const TextStyle(
-                                fontSize: 24, fontWeight: FontWeight.w600),
-                          );
-                        },
-                      )),
+                  Center(child: BlocBuilder<SettingBloc, SettingState>(
+                    builder: (context, state) {
+                      var total = state.envelopesData.values.fold(
+                        0,
+                        (previousValue, element) =>
+                            previousValue + element.total,
+                      );
+                      return Text(
+                        total.toMoneyWithoutDecimal(),
+                        style: const TextStyle(
+                            fontSize: 24, fontWeight: FontWeight.w600),
+                      );
+                    },
+                  )),
                   const SizedBox(
                     height: 8,
                   ),
@@ -115,7 +118,12 @@ class SettingLayout extends StatelessWidget {
               height: 8,
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                var model = context.read<SettingBloc>().state.envelopesData;
+                context
+                    .read<EnvelopeSetBloc>()
+                    .add(EnvelopeSetGenerated(model));
+              },
               child: const Text('Tạo'),
             )
           ],

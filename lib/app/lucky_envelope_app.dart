@@ -31,10 +31,10 @@ class _LuckyEnvelopeAppState extends State<LuckyEnvelopeApp> {
       body: SafeArea(
           child: BlocBuilder<EnvelopeSetBloc, EnvelopeSetState>(
             builder: (context, state) {
-              if(state.data == null || state.data?.envelopes.isEmpty == true){
+              if(state.data.envelopes.isEmpty == true){
                 return const SettingPage();
               }
-              return DrawEnvelopeLayout(envelopes: state.data?.envelopes??[],);
+              return DrawEnvelopeLayout(envelopes: state.data.envelopes,);
             },
           )),
       bottomNavigationBar: BottomNavigationBar(
