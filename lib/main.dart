@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:lucky_envolope/app/core/bloc/bloc_middleware.dart';
 import 'package:lucky_envolope/app/lucky_envelope_app.dart';
+import 'package:lucky_envolope/app/presentation/blocs/draw/draw_bloc.dart';
 import 'package:lucky_envolope/app/presentation/blocs/envelope_set/envelope_set_bloc.dart';
 
 void main() async {
@@ -22,6 +23,9 @@ class MyApp extends StatelessWidget {
         BlocProvider<EnvelopeSetBloc>(
           create: (context) => EnvelopeSetBloc(),
         ),
+        BlocProvider<DrawBloc>(
+          create: (context) => DrawBloc(),
+        )
       ],
       child: MaterialApp(
           title: 'Lucky Envelope',
@@ -29,10 +33,7 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(
             primarySwatch: Colors.blue,
           ),
-          home: const LuckyEnvelopeApp()
-      ),
+          home: const LuckyEnvelopeApp()),
     );
   }
 }
-
-

@@ -139,7 +139,11 @@ class _SettingLayoutState extends State<SettingLayout> {
                     .add(EnvelopeSetGenerated(model));
                 widget.onCreated?.call();
               },
-              child: const Text('Tạo', style: TextStyle(fontSize: 20),),
+              style: ButtonStyle(elevation: MaterialStateProperty.all(0)),
+              child: const Text(
+                'Tạo',
+                style: TextStyle(fontSize: 20),
+              ),
             ),
             OutlinedButton(
               onPressed: () {

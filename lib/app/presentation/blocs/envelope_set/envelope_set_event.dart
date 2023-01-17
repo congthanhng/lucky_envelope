@@ -22,3 +22,5 @@ class EnvelopeSetWithdrawed extends EnvelopeSetEvent {
 
   EnvelopeSetWithdrawed(this.index);
 }
+
+class EnvelopeSetReset extends EnvelopeSetEvent {}

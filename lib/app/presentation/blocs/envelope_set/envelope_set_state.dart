@@ -19,3 +19,7 @@ class EnvelopeSetFetchedSuccess extends EnvelopeSetState {
 class EnvelopeSetGeneratedSuccess extends EnvelopeSetState {
   const EnvelopeSetGeneratedSuccess({required super.data});
 }
+
+class EnvelopeSetWithdrawSuccess extends EnvelopeSetState {
+  const EnvelopeSetWithdrawSuccess({required super.data});
+}

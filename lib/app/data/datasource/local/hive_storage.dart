@@ -49,8 +49,6 @@ class HiveStorage implements LocalStorage {
   @override
   Future<bool> writeData(
       {required String keyName, required Object values}) async {
-    print('writeData: $keyName');
-
     await ensureBoxInitialized();
     if (_box?.isOpen == false) {
       return Future.value(false);
@@ -58,10 +56,8 @@ class HiveStorage implements LocalStorage {
     try {
       await _box?.put(keyName, values);
       var data = await _box?.get(keyName);
-      print('Dataaaaa: $data -- $values');
       return Future.value(true);
     } catch (e) {
-      print('FAILED: $e');
       return Future.value(false);
     }
   }
