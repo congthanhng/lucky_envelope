@@ -12,6 +12,8 @@ class EnvelopeSetBloc extends Bloc<EnvelopeSetEvent, EnvelopeSetState> {
   EnvelopeSetBloc() : super(EnvelopeSetInitial()) {
     on<EnvelopeSetFetched>(_onFetched);
     on<EnvelopeSetGenerated>(_onGenerated);
+    on<EnvelopeSetSaved>(_onSaved);
+    on<EnvelopeSetWithdrawed>(_onWithdrawed);
   }
 
   final SettingUseCase _useCase = SettingUseCase();
@@ -19,6 +21,7 @@ class EnvelopeSetBloc extends Bloc<EnvelopeSetEvent, EnvelopeSetState> {
   _onFetched(EnvelopeSetFetched event, Emitter<EnvelopeSetState> emit) async {
     await _useCase.getSettingData().then(
       (value) {
+        print('Value: $value');
         emit(EnvelopeSetFetchedSuccess(data: value ?? state.data));
       },
     );
@@ -40,7 +43,18 @@ class EnvelopeSetBloc extends Bloc<EnvelopeSetEvent, EnvelopeSetState> {
     result.shuffle();
     var revers = result.reversed.toList();
     revers.shuffle();
-    emit(EnvelopeSetGeneratedSuccess(
-        data: state.data.copyWith(envelopes: revers)));
+    var newData = state.data.copyWith(envelopes: revers);
+    add(EnvelopeSetSaved(newData));
+    emit(EnvelopeSetGeneratedSuccess(data: newData));
+  }
+
+  _onSaved(EnvelopeSetSaved event, Emitter<EnvelopeSetState> emit) async {
+    print('onSAVEEEEE');
+    await _useCase.saveSettingData(event.data);
+  }
+
+  _onWithdrawed(EnvelopeSetWithdrawed event, Emitter<EnvelopeSetState> emit) async {
+    state.data.envelopes[event.index].isWithdraw = true;
+    add(EnvelopeSetSaved(state.data));
   }
 }

@@ -8,4 +8,8 @@ class SettingUseCase {
   Future<SettingData?> getSettingData() {
     return _repository.getSettingData();
   }
+
+  Future<void> saveSettingData(SettingData data) {
+    return _repository.setSettingData(data);
+  }
 }

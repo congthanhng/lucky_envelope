@@ -11,6 +11,7 @@ EnvelopeModel _$EnvelopeModelFromJson(Map<String, dynamic> json) =>
       denominations: json['denominations'] as int,
       quantity: json['quantity'] as int,
       name: json['name'] as String,
+      isWithdraw: json['isWithdraw'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$EnvelopeModelToJson(EnvelopeModel instance) =>
@@ -18,4 +19,5 @@ Map<String, dynamic> _$EnvelopeModelToJson(EnvelopeModel instance) =>
       'denominations': instance.denominations,
       'quantity': instance.quantity,
       'name': instance.name,
+      'isWithdraw': instance.isWithdraw,
     };

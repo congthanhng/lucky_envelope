@@ -12,9 +12,17 @@ class SettingData {
       {required this.envelopes, required this.isKeepingAfterWithdrawal});
 
   factory SettingData.fromJson(Map<String, dynamic> json) =>
-      _$SettingDataFromJson(json);
+      SettingData(
+        envelopes: [...(json['envelopes'] as List<dynamic>)
+            .map((e) => EnvelopeModel.fromJson(e))
+            .toList()],
+        isKeepingAfterWithdrawal: json['isKeepingAfterWithdrawal'] as bool,
+      );
 
-  Map<String, dynamic> toJson() => _$SettingDataToJson(this);
+  Map<String, dynamic> toJson() => <String, dynamic>{
+    'envelopes': [...envelopes.map((e) => e.toJson())],
+    'isKeepingAfterWithdrawal': isKeepingAfterWithdrawal,
+  };
 
   int get totalEnvelope => envelopes.length;
 

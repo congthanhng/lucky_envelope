@@ -1,7 +1,9 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lucky_envolope/app/domain/models/envelope_model.dart';
+import 'package:lucky_envolope/app/presentation/blocs/envelope_set/envelope_set_bloc.dart';
 import 'package:lucky_envolope/app/presentation/components/overlays/dialogs/default_dialog.dart';
 import 'package:lucky_envolope/app/presentation/widgets/envelope_opened_dialog_body.dart';
 
@@ -89,6 +91,7 @@ class _DrawEnvelopeLayoutState extends State<DrawEnvelopeLayout> {
                   preOpenIndex == index
                       ? GestureDetector(
                           onTap: () {
+                            context.read<EnvelopeSetBloc>().add(EnvelopeSetWithdrawed(index));
                             setState(() {
                               preOpenIndex = -1;
                               widget.envelopes[index].isWithdraw = true;
