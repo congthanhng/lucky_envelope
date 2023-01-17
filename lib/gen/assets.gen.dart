@@ -13,6 +13,7 @@ class $AssetsImagesGen {
   const $AssetsImagesGen();
 
   $AssetsImagesEnvolopesGen get envolopes => const $AssetsImagesEnvolopesGen();
+  $AssetsImagesMoneyGen get money => const $AssetsImagesMoneyGen();
 }
 
 class $AssetsImagesEnvolopesGen {
@@ -80,6 +81,64 @@ class $AssetsImagesEnvolopesGen {
         envolope7,
         envolope8,
         envolope9
+      ];
+}
+
+class $AssetsImagesMoneyGen {
+  const $AssetsImagesMoneyGen();
+
+  /// File path: assets/images/money/money0.png
+  AssetGenImage get money0 =>
+      const AssetGenImage('assets/images/money/money0.png');
+
+  /// File path: assets/images/money/money1.png
+  AssetGenImage get money1 =>
+      const AssetGenImage('assets/images/money/money1.png');
+
+  /// File path: assets/images/money/money2.png
+  AssetGenImage get money2 =>
+      const AssetGenImage('assets/images/money/money2.png');
+
+  /// File path: assets/images/money/money3.png
+  AssetGenImage get money3 =>
+      const AssetGenImage('assets/images/money/money3.png');
+
+  /// File path: assets/images/money/money4.png
+  AssetGenImage get money4 =>
+      const AssetGenImage('assets/images/money/money4.png');
+
+  /// File path: assets/images/money/money5.png
+  AssetGenImage get money5 =>
+      const AssetGenImage('assets/images/money/money5.png');
+
+  /// File path: assets/images/money/money6.png
+  AssetGenImage get money6 =>
+      const AssetGenImage('assets/images/money/money6.png');
+
+  /// File path: assets/images/money/money7.png
+  AssetGenImage get money7 =>
+      const AssetGenImage('assets/images/money/money7.png');
+
+  /// File path: assets/images/money/money8.png
+  AssetGenImage get money8 =>
+      const AssetGenImage('assets/images/money/money8.png');
+
+  /// File path: assets/images/money/money9.png
+  AssetGenImage get money9 =>
+      const AssetGenImage('assets/images/money/money9.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [
+        money0,
+        money1,
+        money2,
+        money3,
+        money4,
+        money5,
+        money6,
+        money7,
+        money8,
+        money9
       ];
 }
 
