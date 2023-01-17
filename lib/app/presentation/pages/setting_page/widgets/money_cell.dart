@@ -27,7 +27,6 @@ class _MoneyCellState extends State<MoneyCell> {
           widget.assetsPath,
           width: MediaQuery.of(context).size.width / 3.5,
         ),
-        // SizedBox(width: 16,),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -52,7 +51,8 @@ class _MoneyCellState extends State<MoneyCell> {
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
               child: Text(
                 '$_quantity',
-                style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
+                style:
+                    const TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
               ),
             ),
             InkWell(

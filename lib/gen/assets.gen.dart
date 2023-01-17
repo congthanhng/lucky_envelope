@@ -87,6 +87,10 @@ class $AssetsImagesEnvolopesGen {
 class $AssetsImagesMoneyGen {
   const $AssetsImagesMoneyGen();
 
+  /// File path: assets/images/money/money0.png
+  AssetGenImage get money0 =>
+      const AssetGenImage('assets/images/money/money0.png');
+
   /// File path: assets/images/money/money1.png
   AssetGenImage get money1 =>
       const AssetGenImage('assets/images/money/money1.png');
@@ -124,8 +128,18 @@ class $AssetsImagesMoneyGen {
       const AssetGenImage('assets/images/money/money9.png');
 
   /// List of all assets
-  List<AssetGenImage> get values =>
-      [money1, money2, money3, money4, money5, money6, money7, money8, money9];
+  List<AssetGenImage> get values => [
+        money0,
+        money1,
+        money2,
+        money3,
+        money4,
+        money5,
+        money6,
+        money7,
+        money8,
+        money9
+      ];
 }
 
 class Assets {
