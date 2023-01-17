@@ -2,6 +2,8 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:lucky_envolope/app/domain/models/envelope_model.dart';
+import 'package:lucky_envolope/app/presentation/components/overlays/dialogs/default_dialog.dart';
+import 'package:lucky_envolope/app/presentation/widgets/envelope_opened_dialog_body.dart';
 
 final _rand = Random();
 
@@ -19,13 +21,16 @@ class _DrawEnvelopeLayoutState extends State<DrawEnvelopeLayout> {
   int preOpenIndex = -1;
 
   final List<String> imagePaths = [];
+
   @override
   void initState() {
     for (var element in widget.envelopes) {
-      imagePaths.add('assets/images/envolopes/envolope${_rand.nextInt(12) + 1}.png');
+      imagePaths
+          .add('assets/images/envolopes/envolope${_rand.nextInt(12) + 1}.png');
     }
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
@@ -79,7 +84,12 @@ class _DrawEnvelopeLayoutState extends State<DrawEnvelopeLayout> {
                   ),
                   preOpenIndex == index
                       ? GestureDetector(
-                          onTap: () {},
+                          onTap: () {
+                            DefaultDialog.show(context,
+                                body: EnvelopeOpenedDialogBody(
+                                  model: widget.envelopes[index],
+                                ));
+                          },
                           child: Center(
                             child: Container(
                               decoration: BoxDecoration(

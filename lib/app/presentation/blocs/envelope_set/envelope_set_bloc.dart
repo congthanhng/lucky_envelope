@@ -30,13 +30,17 @@ class EnvelopeSetBloc extends Bloc<EnvelopeSetEvent, EnvelopeSetState> {
     event.dataInput.forEach(
       (key, value) {
         for (var i = 0; i < value.quantity; i++) {
-          result.add(
-              EnvelopeModel(denominations: value.denominations, quantity: 1));
+          result.add(EnvelopeModel(
+              denominations: value.denominations,
+              quantity: 1,
+              name: value.name));
         }
       },
     );
     result.shuffle();
+    var revers = result.reversed.toList();
+    revers.shuffle();
     emit(EnvelopeSetGeneratedSuccess(
-        data: state.data.copyWith(envelopes: result)));
+        data: state.data.copyWith(envelopes: revers)));
   }
 }
