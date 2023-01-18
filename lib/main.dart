@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
           create: (context) => EnvelopeSetBloc(),
         ),
         BlocProvider<DrawBloc>(
-          create: (context) => DrawBloc(),
+          create: (context) => DrawBloc()..add(DrawFetched()),
         )
       ],
       child: MaterialApp(
