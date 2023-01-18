@@ -24,3 +24,9 @@ class EnvelopeSetWithdrawed extends EnvelopeSetEvent {
 }
 
 class EnvelopeSetReset extends EnvelopeSetEvent {}
+
+class EnvelopeSetItemAdded extends EnvelopeSetEvent {
+  final EnvelopeModel item;
+
+  EnvelopeSetItemAdded(this.item);
+}
