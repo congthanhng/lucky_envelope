@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lucky_envolope/app/domain/models/denomination/denomination_vn.dart';
 import 'package:lucky_envolope/app/domain/models/envelope_model.dart';
 import 'package:lucky_envolope/app/presentation/blocs/envelope_set/envelope_set_bloc.dart';
+import 'package:lucky_envolope/app/presentation/pages/setting_page/bloc/setting_bloc.dart';
 
 class AddEnvelopeBSBody extends StatefulWidget {
   const AddEnvelopeBSBody({Key? key}) : super(key: key);
@@ -15,7 +16,8 @@ class _AddEnvelopeBSBodyState extends State<AddEnvelopeBSBody> {
   final List<Widget> cells = DenominationVN.getDefault.values
       .toList()
       .map(
-        (e) => Image.asset('assets/images/denominations/${e.name}.png', fit: BoxFit.fitWidth),
+        (e) => Image.asset('assets/images/denominations/${e.name}.png',
+            fit: BoxFit.fitWidth),
       )
       .toList();
 
@@ -25,6 +27,8 @@ class _AddEnvelopeBSBodyState extends State<AddEnvelopeBSBody> {
   }
 
   int selectedIndex = 4;
+
+  final SettingBloc _settingBloc = SettingBloc()..add(SettingFetched());
 
   @override
   Widget build(BuildContext context) {
@@ -57,17 +61,18 @@ class _AddEnvelopeBSBodyState extends State<AddEnvelopeBSBody> {
           shrinkWrap: true,
           itemBuilder: (context, index) {
             return GestureDetector(
-              onTap: (){
-                if(selectedIndex != index){
+              onTap: () {
+                if (selectedIndex != index) {
                   setState(() {
                     selectedIndex = index;
                   });
                 }
               },
               child: Container(
-                decoration: selectedIndex == index ? BoxDecoration(
-                  border: Border.all(color: Colors.yellow, width: 3)
-                ): null,
+                decoration: selectedIndex == index
+                    ? BoxDecoration(
+                        border: Border.all(color: Colors.yellow, width: 3))
+                    : null,
                 child: cells[index],
               ),
             );
@@ -93,13 +98,15 @@ class _AddEnvelopeBSBodyState extends State<AddEnvelopeBSBody> {
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: ElevatedButton(
             onPressed: () {
-              var denomination = DenominationVN.getDefault.values.toList()[selectedIndex];
-              context.read<EnvelopeSetBloc>().add(EnvelopeSetItemAdded(EnvelopeModel(
-                name: denomination.name,
-                quantity: 1,
-                denominations: denomination.value,
-                isWithdraw: false
-              )));
+              var denomination =
+                  DenominationVN.getDefault.values.toList()[selectedIndex];
+              context.read<EnvelopeSetBloc>().add(EnvelopeSetItemAdded(
+                  EnvelopeModel(
+                      name: denomination.name,
+                      quantity: 1,
+                      denominations: denomination.value,
+                      isWithdraw: false)));
+              _settingBloc.add(SettingQuantityIncreased(denomination.name));
               Navigator.pop(context);
             },
             style: ButtonStyle(elevation: MaterialStateProperty.all(0)),

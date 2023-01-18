@@ -147,7 +147,7 @@ class _LuckyEnvelopeAppState extends State<LuckyEnvelopeApp> {
                   },
                 ),
                 Tooltip(
-                  message: 'Thêm bao',
+                  message: 'Thêm bao lì xì',
                   child: InkWell(
                     borderRadius: BorderRadius.circular(6),
                     onTap: () {
