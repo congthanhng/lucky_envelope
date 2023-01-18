@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lucky_envolope/app/presentation/blocs/draw/draw_bloc.dart';
 import 'package:lucky_envolope/app/presentation/blocs/envelope_set/envelope_set_bloc.dart';
 import 'package:lucky_envolope/app/presentation/components/overlays/dialogs/default_dialog.dart';
 import 'package:lucky_envolope/app/presentation/widgets/history_bs_body.dart';
@@ -49,116 +50,138 @@ class _LuckyEnvelopeAppState extends State<LuckyEnvelopeApp> {
                         .isNotEmpty;
                     return isShowReset
                         ? Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                            child: OutlinedButton(
-                              onPressed: () {
-                                DefaultDialog.show(context,
-                                    body: Center(
-                                      child: Container(
-                                        decoration: BoxDecoration(
-                                            color: Colors.white,
-                                            borderRadius:
-                                                BorderRadius.circular(6)),
-                                        width: MediaQuery.of(context).size.width /
-                                            1.5,
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(16.0),
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.min,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.stretch,
-                                            children: [
-                                              const Text(
-                                                'Bạn có muốn thiết lập lại bộ rút lì xì?',
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                    color: Colors.black,
-                                                    fontSize: 24),
-                                              ),
-                                              const SizedBox(
-                                                height: 8,
-                                              ),
-                                              const Text(
-                                                'Lưu ý: Tất cả các bao lì xì đã rút sẽ được khôi phục lại trạng thái chưa rút.',
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
+                          padding: const EdgeInsets.only(left: 16.0),
+                          child: OutlinedButton(
+                            onPressed: () {
+                              DefaultDialog.show(context,
+                                  body: Center(
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius:
+                                              BorderRadius.circular(6)),
+                                      width:
+                                          MediaQuery.of(context).size.width /
+                                              1.5,
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(16.0),
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.min,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.stretch,
+                                          children: [
+                                            const Text(
+                                              'Bạn có muốn thiết lập lại bộ rút lì xì?',
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
                                                   color: Colors.black,
+                                                  fontSize: 24),
+                                            ),
+                                            const SizedBox(
+                                              height: 8,
+                                            ),
+                                            const Text(
+                                              'Lưu ý: Tất cả các bao lì xì đã rút sẽ được khôi phục lại trạng thái chưa rút.',
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                color: Colors.black,
+                                              ),
+                                            ),
+                                            const SizedBox(
+                                              height: 16,
+                                            ),
+                                            Row(
+                                              children: [
+                                                Expanded(
+                                                  child: OutlinedButton(
+                                                    onPressed: () {
+                                                      Navigator.pop(context);
+                                                    },
+                                                    child: const Text(
+                                                      'Huỷ',
+                                                      style: TextStyle(
+                                                          color:
+                                                              Colors.black),
+                                                    ),
+                                                  ),
                                                 ),
-                                              ),
-                                              const SizedBox(
-                                                height: 16,
-                                              ),
-                                              Row(
-                                                children: [
-                                                  Expanded(
-                                                    child: OutlinedButton(
-                                                      onPressed: () {
-                                                        Navigator.pop(context);
-                                                      },
-                                                      child: const Text(
-                                                        'Huỷ',
-                                                        style: TextStyle(
-                                                            color: Colors.black),
-                                                      ),
+                                                const SizedBox(
+                                                  width: 16,
+                                                ),
+                                                Expanded(
+                                                  child: ElevatedButton(
+                                                    onPressed: () {
+                                                      context
+                                                          .read<
+                                                              EnvelopeSetBloc>()
+                                                          .add(
+                                                              EnvelopeSetReset());
+                                                      Navigator.pop(context);
+                                                    },
+                                                    style: ButtonStyle(
+                                                        elevation:
+                                                            MaterialStateProperty
+                                                                .all(0)),
+                                                    child: const Text(
+                                                      'Có',
+                                                      style: TextStyle(),
                                                     ),
                                                   ),
-                                                  const SizedBox(
-                                                    width: 16,
-                                                  ),
-                                                  Expanded(
-                                                    child: ElevatedButton(
-                                                      onPressed: () {
-                                                        context
-                                                            .read<
-                                                                EnvelopeSetBloc>()
-                                                            .add(
-                                                                EnvelopeSetReset());
-                                                        Navigator.pop(context);
-                                                      },
-                                                      style: ButtonStyle(
-                                                          elevation:
-                                                              MaterialStateProperty
-                                                                  .all(0)),
-                                                      child: const Text(
-                                                        'Có',
-                                                        style: TextStyle(),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              )
-                                            ],
-                                          ),
+                                                ),
+                                              ],
+                                            )
+                                          ],
                                         ),
                                       ),
-                                    ));
-                              },
-                              child: const Text(
-                                'Thiết lập lại',
-                                style: TextStyle(color: Colors.white),
-                              ),
+                                    ),
+                                  ));
+                            },
+                            child: const Text(
+                              'Thiết lập lại',
+                              style: TextStyle(color: Colors.white),
                             ),
-                          )
+                          ),
+                        )
                         : Container();
                   },
                 ),
-                const Spacer(),
                 Tooltip(
-                  message: 'Lịch sử',
+                  message: 'Thêm bao',
                   child: InkWell(
                     borderRadius: BorderRadius.circular(6),
                     onTap: () {
-                      CustomDraws.showHistory(context: context, body: [
-                        const HistoryBSBody()
-                      ]);
+
                     },
                     child: const Padding(
-                        padding: EdgeInsets.symmetric(vertical: 8),
+                        padding:
+                        EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                         child: Icon(
-                          Icons.history,
+                          Icons.add,
                           color: Colors.white,
                         )),
                   ),
+                ),
+                const Spacer(),
+                BlocBuilder<DrawBloc, DrawState>(
+                  builder: (context, state) {
+                    if(state.data.isEmpty) return const SizedBox.shrink();
+                    return Tooltip(
+                      message: 'Lịch sử',
+                      child: InkWell(
+                        borderRadius: BorderRadius.circular(6),
+                        onTap: () {
+                          CustomDraws.showHistory(
+                              context: context, body: [const HistoryBSBody()]);
+                        },
+                        child: const Padding(
+                            padding: EdgeInsets.symmetric(vertical: 8),
+                            child: Icon(
+                              Icons.history,
+                              color: Colors.white,
+                            )),
+                      ),
+                    );
+                  },
                 ),
                 Tooltip(
                   message: 'Cài đặt bộ lì xì',

@@ -48,28 +48,28 @@ class _DrawEnvelopeLayoutState extends State<DrawEnvelopeLayout> {
             crossAxisSpacing: 16),
         padding: const EdgeInsets.all(16),
         itemBuilder: (context, index) {
-          if(index == widget.envelopes.length){
-            return InkWell(
-              onTap: (){
-                if(preOpenIndex != -1){
-                  setState(() {
-                    preOpenIndex = -1;
-                  },);
-                }
-              },
-              child: Container(
-                decoration: BoxDecoration(
-                    border: Border.all(color: Colors.yellow),
-                    borderRadius: BorderRadius.circular(4)),
-                child: Stack(
-                  fit: StackFit.expand,
-                  children: const [
-                    Center(child: Text('Thêm bao', style: TextStyle(color: Colors.white),),)
-                  ],
-                ),
-              ),
-            );
-          }
+          // if(index == widget.envelopes.length){
+          //   return InkWell(
+          //     onTap: (){
+          //       if(preOpenIndex != -1){
+          //         setState(() {
+          //           preOpenIndex = -1;
+          //         },);
+          //       }
+          //     },
+          //     child: Container(
+          //       decoration: BoxDecoration(
+          //           border: Border.all(color: Colors.yellow),
+          //           borderRadius: BorderRadius.circular(4)),
+          //       child: Stack(
+          //         fit: StackFit.expand,
+          //         children: const [
+          //           Center(child: Text('Thêm bao', style: TextStyle(color: Colors.white),),)
+          //         ],
+          //       ),
+          //     ),
+          //   );
+          // }
           return GestureDetector(
             onTap: () {
               if (widget.envelopes[index].isWithdraw) return;
@@ -182,7 +182,7 @@ class _DrawEnvelopeLayoutState extends State<DrawEnvelopeLayout> {
             ),
           );
         },
-        itemCount: widget.envelopes.length + 1,
+        itemCount: widget.envelopes.length,
       ),
     );
   }
