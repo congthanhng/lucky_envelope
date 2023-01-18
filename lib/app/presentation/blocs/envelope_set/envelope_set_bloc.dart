@@ -15,6 +15,7 @@ class EnvelopeSetBloc extends Bloc<EnvelopeSetEvent, EnvelopeSetState> {
     on<EnvelopeSetSaved>(_onSaved);
     on<EnvelopeSetWithdrawed>(_onWithdrawed);
     on<EnvelopeSetReset>(_onReset);
+    on<EnvelopeSetItemAdded>(_onItemAdded);
   }
 
   final SettingUseCase _useCase = SettingUseCase();
@@ -63,7 +64,35 @@ class EnvelopeSetBloc extends Bloc<EnvelopeSetEvent, EnvelopeSetState> {
     var newEnvelopes =
         state.data.envelopes.map((e) => e.copyWith(isWithdraw: false)).toList();
     var newResult = state.data.copyWith(envelopes: newEnvelopes);
+    newResult.envelopes.shuffle();
     add(EnvelopeSetSaved(newResult));
     emit(EnvelopeSetFetchedSuccess(data: newResult));
+  }
+
+  _onItemAdded(
+      EnvelopeSetItemAdded event, Emitter<EnvelopeSetState> emit) async {
+    var newSettingData = state.data.copyWith()..envelopes.add(event.item);
+    Map<int, EnvelopeModel> envelopesWithWithdrawMap = {};
+    for (int i = 0; i < newSettingData.envelopes.length; i++) {
+      if (newSettingData.envelopes[i].isWithdraw) {
+        envelopesWithWithdrawMap[i] = newSettingData.envelopes[i];
+      }
+    }
+    var envelopesWithOutWithdraw = newSettingData.envelopes
+        .where(
+          (element) => element.isWithdraw == false,
+        )
+        .toList();
+    envelopesWithOutWithdraw.shuffle();
+    envelopesWithWithdrawMap.forEach(
+      (key, value) {
+        envelopesWithOutWithdraw.insert(key, value);
+      },
+    );
+
+    var result = newSettingData.copyWith(envelopes: envelopesWithOutWithdraw);
+    add(EnvelopeSetSaved(result));
+    emit(EnvelopeSetFetchedSuccess(data: result));
+
   }
 }

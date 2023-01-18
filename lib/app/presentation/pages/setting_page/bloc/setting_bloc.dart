@@ -14,6 +14,7 @@ class SettingBloc extends Bloc<SettingEvent, SettingState> {
     on<SettingSaved>(_onSaved);
     on<SettingFetched>(_onFetched);
     on<SettingReset>(_onReset);
+    on<SettingQuantityIncreased>(_onQuantityIncreased);
   }
 
   final SettingUseCase _useCase = SettingUseCase();
@@ -44,4 +45,14 @@ class SettingBloc extends Bloc<SettingEvent, SettingState> {
     emit(SettingInitial());
   }
 
+  _onQuantityIncreased(
+      SettingQuantityIncreased event, Emitter<SettingState> emit) async {
+    state.envelopesData[event.envelopeName] =
+        state.envelopesData[event.envelopeName]?.copyWith(
+                quantity:
+                    (state.envelopesData[event.envelopeName]?.quantity ?? 0) +
+                        1) ??
+            EnvelopeModel(quantity: 0, denominations: 0, name: '');
+    add(SettingSaved());
+  }
 }

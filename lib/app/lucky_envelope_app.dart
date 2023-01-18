@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lucky_envolope/app/presentation/blocs/draw/draw_bloc.dart';
 import 'package:lucky_envolope/app/presentation/blocs/envelope_set/envelope_set_bloc.dart';
 import 'package:lucky_envolope/app/presentation/components/overlays/dialogs/default_dialog.dart';
+import 'package:lucky_envolope/app/presentation/widgets/add_envelope_bs_body.dart';
 import 'package:lucky_envolope/app/presentation/widgets/history_bs_body.dart';
 import 'package:lucky_envolope/app/presentation/widgets/widgets.dart';
 
@@ -49,7 +51,7 @@ class _LuckyEnvelopeAppState extends State<LuckyEnvelopeApp> {
                         .isNotEmpty;
                     return isShowReset
                         ? Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                            padding: const EdgeInsets.only(left: 16.0),
                             child: OutlinedButton(
                               onPressed: () {
                                 DefaultDialog.show(context,
@@ -59,8 +61,9 @@ class _LuckyEnvelopeAppState extends State<LuckyEnvelopeApp> {
                                             color: Colors.white,
                                             borderRadius:
                                                 BorderRadius.circular(6)),
-                                        width: MediaQuery.of(context).size.width /
-                                            1.5,
+                                        width:
+                                            MediaQuery.of(context).size.width /
+                                                1.5,
                                         child: Padding(
                                           padding: const EdgeInsets.all(16.0),
                                           child: Column(
@@ -98,7 +101,8 @@ class _LuckyEnvelopeAppState extends State<LuckyEnvelopeApp> {
                                                       child: const Text(
                                                         'Huỷ',
                                                         style: TextStyle(
-                                                            color: Colors.black),
+                                                            color:
+                                                                Colors.black),
                                                       ),
                                                     ),
                                                   ),
@@ -142,23 +146,46 @@ class _LuckyEnvelopeAppState extends State<LuckyEnvelopeApp> {
                         : Container();
                   },
                 ),
-                const Spacer(),
                 Tooltip(
-                  message: 'Lịch sử',
+                  message: 'Thêm bao lì xì',
                   child: InkWell(
                     borderRadius: BorderRadius.circular(6),
                     onTap: () {
-                      CustomDraws.showHistory(context: context, body: [
-                        const HistoryBSBody()
+                      CustomDraws.addNewEnvelope(
+                          context: context, body: [
+                        const AddEnvelopeBSBody()
                       ]);
                     },
                     child: const Padding(
-                        padding: EdgeInsets.symmetric(vertical: 8),
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                         child: Icon(
-                          Icons.history,
+                          Icons.add,
                           color: Colors.white,
                         )),
                   ),
+                ),
+                const Spacer(),
+                BlocBuilder<DrawBloc, DrawState>(
+                  builder: (context, state) {
+                    if (state.data.isEmpty) return const SizedBox.shrink();
+                    return Tooltip(
+                      message: 'Lịch sử',
+                      child: InkWell(
+                        borderRadius: BorderRadius.circular(6),
+                        onTap: () {
+                          CustomDraws.showHistory(
+                              context: context, body: [const HistoryBSBody()]);
+                        },
+                        child: const Padding(
+                            padding: EdgeInsets.symmetric(vertical: 8),
+                            child: Icon(
+                              Icons.history,
+                              color: Colors.white,
+                            )),
+                      ),
+                    );
+                  },
                 ),
                 Tooltip(
                   message: 'Cài đặt bộ lì xì',

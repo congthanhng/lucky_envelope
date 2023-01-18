@@ -15,3 +15,9 @@ class SettingSaved extends SettingEvent{}
 class SettingFetched extends SettingEvent{}
 
 class SettingReset extends SettingEvent{}
+class SettingQuantityIncreased extends SettingEvent{
+  final String envelopeName;
+
+  SettingQuantityIncreased(this.envelopeName);
+
+}
