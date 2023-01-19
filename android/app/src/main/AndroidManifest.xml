@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.lucky_envolope">
    <application
-        android:label="lucky_envolope"
+        android:label="Rút lì xì"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         <activity
