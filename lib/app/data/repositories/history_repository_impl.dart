@@ -11,6 +11,7 @@ class HistoryRepositoryImpl implements HistoryRepository{
   @override
   Future<List<HistoryModel>?> getHistoryData() async {
     var data = await _localStorage.readData(keyName: 'History');
+    if(data == null) return Future.value();
     var models = jsonDecode(data) as List<dynamic>;
     var results = models.map((e) => HistoryModel.fromJson(e),).toList();
     return Future.value(results);
