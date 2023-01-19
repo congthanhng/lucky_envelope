@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<EnvelopeSetBloc>(
-          create: (context) => EnvelopeSetBloc(),
+          create: (context) => EnvelopeSetBloc()..add(EnvelopeSetFetched()),
         ),
         BlocProvider<DrawBloc>(
           create: (context) => DrawBloc()..add(DrawFetched()),
