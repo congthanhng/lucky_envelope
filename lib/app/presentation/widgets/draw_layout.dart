@@ -46,7 +46,7 @@ class _DrawEnvelopeLayoutState extends State<DrawEnvelopeLayout> {
                     : 4,
             mainAxisSpacing: 16,
             crossAxisSpacing: 16),
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.only(bottom: 16, left: 16, right: 16, top: 8),
         itemBuilder: (context, index) {
           // if(index == widget.envelopes.length){
           //   return InkWell(

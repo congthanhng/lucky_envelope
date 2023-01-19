@@ -56,7 +56,7 @@ class _EnvelopeOpenedDialogBodyState extends State<EnvelopeOpenedDialogBody> {
                         controller: _controller,
                         cursorColor: Colors.white,
                         cursorHeight: 20,
-                        autofocus: false,
+                        autofocus: true,
                         style: const TextStyle(color: Colors.white, fontSize: 24),
                         // textAlign: TextAlign.end,
                         decoration: const InputDecoration(

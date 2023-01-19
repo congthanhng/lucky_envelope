@@ -39,9 +39,7 @@ class HiveStorage implements LocalStorage {
   @override
   Future<T>? readData<T>({required String keyName}) async {
     await ensureBoxInitialized();
-    print('getKeyname: $keyName');
     var data = await _box?.get(keyName);
-    print('getKeyname data: $data');
 
     return data;
   }
