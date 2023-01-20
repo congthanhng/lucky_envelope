@@ -35,158 +35,157 @@ class _AddEnvelopeBSBodyState extends State<AddEnvelopeBSBody> {
   @override
   Widget build(BuildContext context) {
     var isTablet = DeviceInfo.isTablet;
-    return SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          const SizedBox(
-            height: 16,
-          ),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.0),
-            child: Text(
-              'Chọn mệnh giá:',
-              style: TextStyle(
-                color: Colors.white,
-              ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        const SizedBox(
+          height: 16,
+        ),
+        const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16.0),
+          child: Text(
+            'Chọn mệnh giá:',
+            style: TextStyle(
+              color: Colors.white,
             ),
           ),
-          const SizedBox(
-            height: 8,
-          ),
-          GridView.builder(
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                childAspectRatio: 2,
-                crossAxisCount: isTablet ? 5 : 3,
-                mainAxisSpacing: 16,
-                crossAxisSpacing: 16),
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            physics: const NeverScrollableScrollPhysics(),
-            shrinkWrap: true,
-            itemBuilder: (context, index) {
-              return GestureDetector(
-                onTap: () {
-                  if (selectedIndex != index) {
-                    setState(() {
-                      selectedIndex = index;
-                    });
-                  }
-                },
-                child: Container(
-                  decoration: selectedIndex == index
-                      ? BoxDecoration(
-                          border: Border.all(color: Colors.yellow, width: 3))
-                      : null,
-                  child: cells[index],
-                ),
-              );
-            },
-            itemCount: cells.length,
-          ),
-          const SizedBox(
-            height: 16,
-          ),
-          Stack(
-            alignment: Alignment.centerLeft,
-            children: [
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16.0),
-                child: Text(
-                  'Số lượng:',
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  InkWell(
-                    onTap: () {
-                      if (quantity < 1) {
-                        setState(() {
-                          quantity = 1;
-                        });
-                      } else if (quantity > 1) {
-                        setState(() {
-                          quantity--;
-                        });
-                      }
-                    },
-                    child: const Padding(
-                      padding: EdgeInsets.all(6.0),
-                      child: Icon(Icons.remove, color: Colors.white),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    child: Text(
-                      '$quantity',
-                      style: const TextStyle(
-                          fontSize: 24, fontWeight: FontWeight.w600),
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      setState(() {
-                        quantity++;
-                      });
-                    },
-                    child: const Padding(
-                      padding: EdgeInsets.all(6.0),
-                      child: Icon(
-                        Icons.add,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-          const SizedBox(
-            height: 16,
-          ),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.0),
-            child: Text(
-              'Lưu ý: Sau khi nhấn thêm, toàn bộ lì xì chưa rút còn lại sẽ bị xáo trộn vị trí để đảm bảo tính ngẫu nhiên và công bằng.',
-              style: TextStyle(
-                color: Colors.white,
-              ),
-            ),
-          ),
-          const SizedBox(
-            height: 8,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: ElevatedButton(
-              onPressed: () {
-                var denomination =
-                    DenominationVN.getDefault.values.toList()[selectedIndex];
-                context.read<EnvelopeSetBloc>().add(EnvelopeSetItemAdded(
-                    EnvelopeModel(
-                        name: denomination.name,
-                        quantity: quantity,
-                        denominations: denomination.value,
-                        isWithdraw: false)));
-                _settingBloc
-                    .add(SettingQuantityIncreased(denomination.name, quantity));
-                Navigator.pop(context);
+        ),
+        const SizedBox(
+          height: 8,
+        ),
+        GridView.builder(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              childAspectRatio: 2,
+              crossAxisCount: isTablet ? 5 : 3,
+              mainAxisSpacing: 16,
+              crossAxisSpacing: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          physics: const NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
+          itemBuilder: (context, index) {
+            return GestureDetector(
+              onTap: () {
+                if (selectedIndex != index) {
+                  setState(() {
+                    selectedIndex = index;
+                  });
+                }
               },
-              style: ButtonStyle(elevation: MaterialStateProperty.all(0)),
-              child: const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 24.0),
-                child: Text(
-                  'Thêm',
-                  style: TextStyle(color: Colors.white),
+              child: Container(
+                decoration: selectedIndex == index
+                    ? BoxDecoration(
+                        border: Border.all(color: Colors.yellow, width: 3))
+                    : null,
+                child: cells[index],
+              ),
+            );
+          },
+          itemCount: cells.length,
+        ),
+        const SizedBox(
+          height: 16,
+        ),
+        Stack(
+          alignment: Alignment.centerLeft,
+          children: [
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.0),
+              child: Text(
+                'Số lượng:',
+                style: TextStyle(
+                  color: Colors.white,
                 ),
               ),
             ),
-          )
-        ],
-      ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                InkWell(
+                  onTap: () {
+                    if (quantity < 1) {
+                      setState(() {
+                        quantity = 1;
+                      });
+                    } else if (quantity > 1) {
+                      setState(() {
+                        quantity--;
+                      });
+                    }
+                  },
+                  child: const Padding(
+                    padding: EdgeInsets.all(6.0),
+                    child: Icon(Icons.remove, color: Colors.white),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: Text(
+                    '$quantity',
+                    style: const TextStyle(
+                        fontSize: 24, fontWeight: FontWeight.w600),
+                  ),
+                ),
+                InkWell(
+                  onTap: () {
+                    setState(() {
+                      quantity++;
+                    });
+                  },
+                  child: const Padding(
+                    padding: EdgeInsets.all(6.0),
+                    child: Icon(
+                      Icons.add,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+        const SizedBox(
+          height: 16,
+        ),
+        const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16.0),
+          child: Text(
+            'Lưu ý: Sau khi nhấn thêm, toàn bộ lì xì chưa rút còn lại sẽ bị xáo trộn vị trí để đảm bảo tính ngẫu nhiên và công bằng.',
+            style: TextStyle(
+              color: Colors.white,
+            ),
+          ),
+        ),
+        const SizedBox(
+          height: 8,
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          child: ElevatedButton(
+            onPressed: () {
+              var denomination =
+                  DenominationVN.getDefault.values.toList()[selectedIndex];
+              context.read<EnvelopeSetBloc>().add(EnvelopeSetItemAdded(
+                  EnvelopeModel(
+                      name: denomination.name,
+                      quantity: quantity,
+                      denominations: denomination.value,
+                      isWithdraw: false)));
+              _settingBloc
+                  .add(SettingQuantityIncreased(denomination.name, quantity));
+              Navigator.pop(context);
+            },
+            style: ButtonStyle(elevation: MaterialStateProperty.all(0)),
+            child: const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 24.0),
+              child: Text(
+                'Thêm',
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+          ),
+        )
+      ],
     );
   }
 }

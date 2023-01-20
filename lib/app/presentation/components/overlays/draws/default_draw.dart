@@ -47,15 +47,7 @@ class CustomDraws {
                 ),
               ],
             ),
-            Expanded(
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    ...body
-                  ],
-                ),
-              ),
-            ),
+            ...body,
             const SizedBox(
               height: 24,
             ),
@@ -129,7 +121,7 @@ class CustomDraws {
   }
 
   static addNewEnvelope(
-      {required BuildContext context, required List<Widget> body}) {
+      {required BuildContext context, required Widget body}) {
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
@@ -172,7 +164,7 @@ class CustomDraws {
                 ),
               ],
             ),
-            ...body,
+            body,
             const SizedBox(
               height: 24,
             ),
@@ -233,15 +225,7 @@ class CustomDraws {
                 ),
               ],
             ),
-            Expanded(
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    ...body
-                  ],
-                ),
-              ),
-            ),
+            ...body,
             const SizedBox(
               height: 24,
             ),
