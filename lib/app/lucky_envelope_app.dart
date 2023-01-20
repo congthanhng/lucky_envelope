@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lucky_envolope/app/presentation/blocs/draw/draw_bloc.dart';
 import 'package:lucky_envolope/app/presentation/blocs/envelope_set/envelope_set_bloc.dart';
@@ -21,7 +22,10 @@ class LuckyEnvelopeApp extends StatefulWidget {
 class _LuckyEnvelopeAppState extends State<LuckyEnvelopeApp> {
   @override
   void initState() {
-    // context.read<EnvelopeSetBloc>().add(EnvelopeSetFetched());
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
     super.initState();
   }
 
@@ -149,7 +153,7 @@ class _LuckyEnvelopeAppState extends State<LuckyEnvelopeApp> {
                   borderRadius: BorderRadius.circular(6),
                   onTap: () {
                     CustomDraws.addNewEnvelope(
-                        context: context, body: [const AddEnvelopeBSBody()]);
+                        context: context, body: const AddEnvelopeBSBody());
                   },
                   child: const Padding(
                       padding:
