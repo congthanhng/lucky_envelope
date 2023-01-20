@@ -27,6 +27,7 @@ class _AddEnvelopeBSBodyState extends State<AddEnvelopeBSBody> {
   }
 
   int selectedIndex = 4;
+  int quantity = 1;
 
   final SettingBloc _settingBloc = SettingBloc()..add(SettingFetched());
 
@@ -82,6 +83,67 @@ class _AddEnvelopeBSBodyState extends State<AddEnvelopeBSBody> {
         const SizedBox(
           height: 16,
         ),
+        Stack(
+          alignment: Alignment.centerLeft,
+          children: [
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.0),
+              child: Text(
+                'Số lượng:',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                InkWell(
+                  onTap: () {
+                    if (quantity < 1) {
+                      setState(() {
+                        quantity = 1;
+                      });
+                    } else if (quantity > 1) {
+                      setState(() {
+                        quantity--;
+                      });
+                    }
+                  },
+                  child: const Padding(
+                    padding: EdgeInsets.all(6.0),
+                    child: Icon(Icons.remove, color: Colors.white),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: Text(
+                    '$quantity',
+                    style: const TextStyle(
+                        fontSize: 24, fontWeight: FontWeight.w600),
+                  ),
+                ),
+                InkWell(
+                  onTap: () {
+                    setState(() {
+                      quantity++;
+                    });
+                  },
+                  child: const Padding(
+                    padding: EdgeInsets.all(6.0),
+                    child: Icon(
+                      Icons.add,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+        const SizedBox(
+          height: 16,
+        ),
         const Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.0),
           child: Text(
@@ -103,10 +165,10 @@ class _AddEnvelopeBSBodyState extends State<AddEnvelopeBSBody> {
               context.read<EnvelopeSetBloc>().add(EnvelopeSetItemAdded(
                   EnvelopeModel(
                       name: denomination.name,
-                      quantity: 1,
+                      quantity: quantity,
                       denominations: denomination.value,
                       isWithdraw: false)));
-              _settingBloc.add(SettingQuantityIncreased(denomination.name));
+              _settingBloc.add(SettingQuantityIncreased(denomination.name, quantity));
               Navigator.pop(context);
             },
             style: ButtonStyle(elevation: MaterialStateProperty.all(0)),
