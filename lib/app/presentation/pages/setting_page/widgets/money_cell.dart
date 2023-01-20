@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lucky_envolope/app/presentation/pages/setting_page/bloc/setting_bloc.dart';
+import 'package:lucky_envolope/app/utils/device_type.dart';
 
 class MoneyCell extends StatefulWidget {
   const MoneyCell(
@@ -19,11 +20,9 @@ class MoneyCell extends StatefulWidget {
 }
 
 class _MoneyCellState extends State<MoneyCell> {
-  // EnvelopeModel? _model;
 
   @override
   void initState() {
-    // _model = context.read<SettingBloc>().state.envelopesData[widget.name];
     super.initState();
   }
 
@@ -34,11 +33,12 @@ class _MoneyCellState extends State<MoneyCell> {
 
   @override
   Widget build(BuildContext context) {
+    var isTablet = DeviceInfo.isTablet;
     return Column(
       children: [
         Image.asset(
           widget.assetsPath,
-          width: MediaQuery.of(context).size.width / 3.7,
+          width: MediaQuery.of(context).size.width / (isTablet ? 6 : 3.7),
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,

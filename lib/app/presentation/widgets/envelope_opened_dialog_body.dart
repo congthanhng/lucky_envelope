@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lucky_envolope/app/domain/models/envelope_model.dart';
 import 'package:lucky_envolope/app/domain/models/history/history_model.dart';
 import 'package:lucky_envolope/app/presentation/blocs/draw/draw_bloc.dart';
+import 'package:lucky_envolope/app/utils/device_type.dart';
 
 class EnvelopeOpenedDialogBody extends StatefulWidget {
   const EnvelopeOpenedDialogBody({Key? key, required this.model})
@@ -26,6 +27,8 @@ class _EnvelopeOpenedDialogBodyState extends State<EnvelopeOpenedDialogBody> {
 
   @override
   Widget build(BuildContext context) {
+    var isTablet = DeviceInfo.isTablet;
+
     return Scaffold(
       backgroundColor: Colors.transparent,
       resizeToAvoidBottomInset: true,
@@ -56,14 +59,17 @@ class _EnvelopeOpenedDialogBodyState extends State<EnvelopeOpenedDialogBody> {
                         controller: _controller,
                         cursorColor: Colors.white,
                         cursorHeight: 20,
-                        autofocus: true,
-                        style: const TextStyle(color: Colors.white, fontSize: 24),
+                        autofocus: isTablet ? false : true,
+                        style:
+                            const TextStyle(color: Colors.white, fontSize: 24),
                         // textAlign: TextAlign.end,
                         decoration: const InputDecoration(
                           hintText: 'Nhập tên...',
-                          hintStyle: TextStyle(color: Colors.grey, fontSize: 20),
+                          hintStyle:
+                              TextStyle(color: Colors.grey, fontSize: 20),
                           focusColor: Colors.white,
-                          labelStyle: TextStyle(color: Colors.white, fontSize: 24),
+                          labelStyle:
+                              TextStyle(color: Colors.white, fontSize: 24),
                           border: InputBorder.none,
                           contentPadding: EdgeInsets.zero,
                         ),
@@ -83,7 +89,9 @@ class _EnvelopeOpenedDialogBodyState extends State<EnvelopeOpenedDialogBody> {
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                  child: Image.asset('assets/images/denominations/${widget.model.name}.png'),
+                  child: Image.asset(
+                    'assets/images/denominations/${widget.model.name}.png',
+                  ),
                 ),
                 const SizedBox(
                   height: 24,
