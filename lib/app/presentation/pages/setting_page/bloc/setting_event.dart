@@ -17,7 +17,8 @@ class SettingFetched extends SettingEvent{}
 class SettingReset extends SettingEvent{}
 class SettingQuantityIncreased extends SettingEvent{
   final String envelopeName;
+  final int quantity;
 
-  SettingQuantityIncreased(this.envelopeName);
+  SettingQuantityIncreased(this.envelopeName, this.quantity);
 
 }

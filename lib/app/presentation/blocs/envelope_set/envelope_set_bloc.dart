@@ -71,7 +71,9 @@ class EnvelopeSetBloc extends Bloc<EnvelopeSetEvent, EnvelopeSetState> {
 
   _onItemAdded(
       EnvelopeSetItemAdded event, Emitter<EnvelopeSetState> emit) async {
-    var newSettingData = state.data.copyWith()..envelopes.add(event.item);
+
+    var listAddedEnvelope = List.generate(event.item.quantity, (index) => event.item.copyWith(quantity: 1),);
+    var newSettingData = state.data.copyWith()..envelopes.addAll(listAddedEnvelope);
     Map<int, EnvelopeModel> envelopesWithWithdrawMap = {};
     for (int i = 0; i < newSettingData.envelopes.length; i++) {
       if (newSettingData.envelopes[i].isWithdraw) {

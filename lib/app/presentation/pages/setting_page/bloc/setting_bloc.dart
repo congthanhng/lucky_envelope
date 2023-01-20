@@ -51,7 +51,7 @@ class SettingBloc extends Bloc<SettingEvent, SettingState> {
         state.envelopesData[event.envelopeName]?.copyWith(
                 quantity:
                     (state.envelopesData[event.envelopeName]?.quantity ?? 0) +
-                        1) ??
+                        event.quantity) ??
             EnvelopeModel(quantity: 0, denominations: 0, name: '');
     add(SettingSaved());
   }
