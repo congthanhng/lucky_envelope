@@ -4,6 +4,7 @@ import 'package:lucky_envolope/app/presentation/blocs/envelope_set/envelope_set_
 import 'package:lucky_envolope/app/presentation/pages/setting_page/bloc/setting_bloc.dart';
 import 'package:lucky_envolope/app/presentation/pages/setting_page/widgets/money_cell.dart';
 import 'package:lucky_envolope/app/presentation/resources/values/constants.dart';
+import 'package:lucky_envolope/app/utils/device_type.dart';
 import 'package:lucky_envolope/app/utils/num_extension.dart';
 import 'package:lucky_envolope/gen/assets.gen.dart';
 
@@ -67,6 +68,7 @@ class _SettingLayoutState extends State<SettingLayout> {
 
   @override
   Widget build(BuildContext context) {
+    var isTablet = DeviceInfo.isTablet;
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -78,7 +80,7 @@ class _SettingLayoutState extends State<SettingLayout> {
                   BoxDecoration(border: Border.all(color: Colors.yellow)),
               padding: const EdgeInsets.only(top: 16),
               child: GridView.count(
-                crossAxisCount: 2,
+                crossAxisCount: isTablet ? 4 : 2,
                 childAspectRatio: 2,
                 padding: EdgeInsets.zero,
                 physics: const NeverScrollableScrollPhysics(),

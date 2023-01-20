@@ -233,7 +233,15 @@ class CustomDraws {
                 ),
               ],
             ),
-            ...body,
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    ...body
+                  ],
+                ),
+              ),
+            ),
             const SizedBox(
               height: 24,
             ),

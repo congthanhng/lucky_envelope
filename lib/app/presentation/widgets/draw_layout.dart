@@ -6,6 +6,7 @@ import 'package:lucky_envolope/app/domain/models/envelope_model.dart';
 import 'package:lucky_envolope/app/presentation/blocs/envelope_set/envelope_set_bloc.dart';
 import 'package:lucky_envolope/app/presentation/components/overlays/dialogs/default_dialog.dart';
 import 'package:lucky_envolope/app/presentation/widgets/envelope_opened_dialog_body.dart';
+import 'package:lucky_envolope/app/utils/device_type.dart';
 
 final _rand = Random();
 
@@ -35,41 +36,22 @@ class _DrawEnvelopeLayoutState extends State<DrawEnvelopeLayout> {
 
   @override
   Widget build(BuildContext context) {
+    var isTablet = DeviceInfo.isTablet;
     return LayoutBuilder(
       builder: (context, constrain) => GridView.builder(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             childAspectRatio: 0.7,
-            crossAxisCount: widget.envelopes.length <= 6
-                ? 2
-                : widget.envelopes.length <= 12
-                    ? 3
-                    : 4,
+            crossAxisCount: isTablet
+                ? 6
+                : widget.envelopes.length <= 6
+                    ? 2
+                    : widget.envelopes.length <= 12
+                        ? 3
+                        : 4,
             mainAxisSpacing: 16,
             crossAxisSpacing: 16),
         padding: const EdgeInsets.only(bottom: 16, left: 16, right: 16, top: 8),
         itemBuilder: (context, index) {
-          // if(index == widget.envelopes.length){
-          //   return InkWell(
-          //     onTap: (){
-          //       if(preOpenIndex != -1){
-          //         setState(() {
-          //           preOpenIndex = -1;
-          //         },);
-          //       }
-          //     },
-          //     child: Container(
-          //       decoration: BoxDecoration(
-          //           border: Border.all(color: Colors.yellow),
-          //           borderRadius: BorderRadius.circular(4)),
-          //       child: Stack(
-          //         fit: StackFit.expand,
-          //         children: const [
-          //           Center(child: Text('Thêm bao', style: TextStyle(color: Colors.white),),)
-          //         ],
-          //       ),
-          //     ),
-          //   );
-          // }
           return GestureDetector(
             onTap: () {
               if (widget.envelopes[index].isWithdraw) return;
@@ -85,7 +67,6 @@ class _DrawEnvelopeLayoutState extends State<DrawEnvelopeLayout> {
               decoration: BoxDecoration(
                   border: Border.all(color: Colors.yellow),
                   borderRadius: BorderRadius.circular(4)),
-              // clipBehavior: Clip.hardEdge,
               child: Stack(
                 fit: StackFit.expand,
                 children: [
@@ -131,8 +112,9 @@ class _DrawEnvelopeLayoutState extends State<DrawEnvelopeLayout> {
                                   shape: BoxShape.circle,
                                   color: Colors.yellow[700]),
                               child: Padding(
-                                padding:
-                                    EdgeInsets.all(widget.envelopes.length <= 6
+                                padding: EdgeInsets.all(isTablet
+                                    ? 32
+                                    : widget.envelopes.length <= 6
                                         ? 28
                                         : widget.envelopes.length <= 12
                                             ? 20
@@ -159,8 +141,9 @@ class _DrawEnvelopeLayoutState extends State<DrawEnvelopeLayout> {
                                     color: Colors.grey.shade600,
                                     shape: BoxShape.circle),
                                 child: Padding(
-                                  padding: EdgeInsets.all(
-                                      widget.envelopes.length <= 6
+                                  padding: EdgeInsets.all(isTablet
+                                      ? 32
+                                      : widget.envelopes.length <= 6
                                           ? 28
                                           : widget.envelopes.length <= 12
                                               ? 20
