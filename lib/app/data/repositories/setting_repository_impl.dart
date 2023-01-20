@@ -12,6 +12,7 @@ class SettingRepositoryImpl implements SettingRepository {
   @override
   Future<SettingData?> getSettingData() async {
     var data = await _localStorage.readData(keyName: 'LuckyEnvelope');
+    if(data == null) return Future.value();
     var models = jsonDecode(data) as Map<String, dynamic>;
     var results = SettingData.fromJson(models);
 
@@ -36,6 +37,7 @@ class SettingRepositoryImpl implements SettingRepository {
   @override
   Future<Map<String, EnvelopeModel>> getSettingDenominations() async {
     var data = await _localStorage.readData(keyName: 'SettingDenominations');
+    if(data == null) return Future.error('');
     var models = jsonDecode(data) as Map<String, dynamic>;
     var result = models.map((key, value) {
       return MapEntry(key, EnvelopeModel.fromJson(value));

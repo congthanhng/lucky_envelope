@@ -58,6 +58,7 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
   hive_generator: ^2.0.0
+  flutter_launcher_icons: 0.11.0
 
 
 # For information on the generic Dart part of this file, see the
@@ -75,6 +76,7 @@ flutter:
   assets:
     - assets/images/envolopes/
     - assets/images/denominations/
+    - assets/icon/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -102,3 +104,8 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/icon/logo_logo.png"
+  min_sdk_android: 21
