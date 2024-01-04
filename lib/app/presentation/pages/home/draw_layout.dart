@@ -7,7 +7,7 @@ import 'package:lucky_envolope/app/presentation/blocs/envelope_set/envelope_set_
 import 'package:lucky_envolope/app/presentation/components/overlays/dialogs/default_dialog.dart';
 import 'package:lucky_envolope/shared/shelf.dart';
 
-import 'envelope_opened_dialog_body.dart';
+import '../../components/envelope_opened_dialog_body.dart';
 
 final _rand = Random();
 
@@ -41,7 +41,7 @@ class _DrawEnvelopeLayoutState extends State<DrawEnvelopeLayout> {
     return LayoutBuilder(
       builder: (context, constrain) => GridView.builder(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            childAspectRatio: 0.7,
+            childAspectRatio: 0.6,
             crossAxisCount: isTablet
                 ? 6
                 : widget.envelopes.length <= 6
@@ -49,8 +49,8 @@ class _DrawEnvelopeLayoutState extends State<DrawEnvelopeLayout> {
                     : widget.envelopes.length <= 12
                         ? 3
                         : 4,
-            mainAxisSpacing: 16,
-            crossAxisSpacing: 16),
+            mainAxisSpacing: 8,
+            crossAxisSpacing: 8),
         padding: const EdgeInsets.only(bottom: 16, left: 16, right: 16, top: 8),
         itemBuilder: (context, index) {
           return GestureDetector(
@@ -69,27 +69,33 @@ class _DrawEnvelopeLayoutState extends State<DrawEnvelopeLayout> {
                   border: Border.all(color: Colors.yellow),
                   borderRadius: BorderRadius.circular(4)),
               child: Stack(
-                fit: StackFit.expand,
                 children: [
-                  Opacity(
-                    opacity: preOpenIndex == index ? 0.5 : 1,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(4),
-                      child: Image.asset(
-                        imagePaths[index],
-                        width: (constrain.maxWidth / 4) - 16,
-                        fit: BoxFit.fill,
+                  Positioned.fill(
+                    child: Opacity(
+                      opacity: preOpenIndex == index ? 0.5 : 1,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(4),
+                        child: Image.asset(
+                          imagePaths[index],
+                          width: (constrain.maxWidth / 4) - 16,
+                          fit: BoxFit.fill,
+                        ),
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      '${index + 1}',
-                      style: const TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 24),
+                  Container(
+                    decoration: BoxDecoration(
+                        color: Colors.black.withOpacity(.5),
+                        borderRadius: BorderRadius.circular(4)),
+                    child: Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: Text(
+                        '${index + 1}',
+                        style: const TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 18),
+                      ),
                     ),
                   ),
                   preOpenIndex == index
@@ -122,7 +128,7 @@ class _DrawEnvelopeLayoutState extends State<DrawEnvelopeLayout> {
                                             : 16),
                                 child: const Text(
                                   'Mở',
-                                  style: TextStyle(color: Colors.white),
+                                  style: TextStyle(color: Colors.black),
                                 ),
                               ),
                             ),

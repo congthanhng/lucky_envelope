@@ -9,6 +9,7 @@ import '../pages.dart';
 import 'widgets/info_button.dart';
 import 'widgets/reset_button.dart';
 import 'widgets/setting_button.dart';
+import 'widgets/shuffle_button.dart';
 
 class HomeLayout extends StatelessWidget {
   const HomeLayout({super.key});
@@ -27,6 +28,7 @@ class HomeLayout extends StatelessWidget {
         children: [
           HomeAddButton(),
           HomeResetButton(),
+          HomeShuffleButton(),
           Spacer(),
           HomeInfoButton(),
           HomeHistoryButton(),
