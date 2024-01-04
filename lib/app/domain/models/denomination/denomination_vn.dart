@@ -1,5 +1,5 @@
-import 'package:lucky_envolope/app/presentation/resources/values/constants.dart';
 
+import '../../../resources/values/constants.dart';
 import 'denomination.dart';
 
 class DenominationVN {

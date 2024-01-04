@@ -3,23 +3,19 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lucky_envolope/app/presentation/blocs/draw/draw_bloc.dart';
 import 'package:lucky_envolope/app/presentation/blocs/envelope_set/envelope_set_bloc.dart';
-import 'package:lucky_envolope/app/presentation/components/overlays/dialogs/default_dialog.dart';
-import 'package:lucky_envolope/app/presentation/widgets/add_envelope_bs_body.dart';
-import 'package:lucky_envolope/app/presentation/widgets/envelope_set_info_bs_body.dart';
-import 'package:lucky_envolope/app/presentation/widgets/history_bs_body.dart';
-import 'package:lucky_envolope/app/presentation/widgets/widgets.dart';
 
-import 'presentation/components/overlays/draws/default_draw.dart';
-import 'presentation/pages/pages.dart';
+import '../../components/overlays/draws/default_draw.dart';
+import '../../components/shelf.dart';
+import '../pages.dart';
 
-class LuckyEnvelopeApp extends StatefulWidget {
-  const LuckyEnvelopeApp({Key? key}) : super(key: key);
+class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
 
   @override
-  State<LuckyEnvelopeApp> createState() => _LuckyEnvelopeAppState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _LuckyEnvelopeAppState extends State<LuckyEnvelopeApp> {
+class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     SystemChrome.setPreferredOrientations([

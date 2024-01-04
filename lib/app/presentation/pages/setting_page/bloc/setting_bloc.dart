@@ -1,8 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:lucky_envolope/app/domain/models/envelope_model.dart';
 import 'package:lucky_envolope/app/domain/usecases/setting_usecase.dart';
-import 'package:lucky_envolope/app/presentation/resources/values/constants.dart';
 import 'package:meta/meta.dart';
+
+import '../../../../resources/values/constants.dart';
 
 part 'setting_event.dart';
 

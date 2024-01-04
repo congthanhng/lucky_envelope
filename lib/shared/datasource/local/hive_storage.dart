@@ -1,7 +1,7 @@
 // import 'package:hive/hive.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:lucky_envolope/app/core/local_storage/app_local_storage.dart';
+import 'package:lucky_envolope/shared/core/local_storage/app_local_storage.dart';
 
 class HiveStorage implements LocalStorage {
   Box? _box;

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lucky_envolope/app/presentation/pages/setting_page/bloc/setting_bloc.dart';
-import 'package:lucky_envolope/app/utils/device_type.dart';
+import 'package:lucky_envolope/shared/shelf.dart';
 
 class MoneyCell extends StatefulWidget {
   const MoneyCell(

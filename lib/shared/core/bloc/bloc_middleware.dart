@@ -6,13 +6,13 @@ class AppBlocObserver extends BlocObserver {
   void onChange(BlocBase bloc, Change change) {
     super.onChange(bloc, change);
     if (bloc is Cubit) {
-      if (kDebugMode) print('BLOC changeState: $change');
+      debugPrint('BLOC changeState: $change');
     }
   }
 
   @override
   void onTransition(Bloc bloc, Transition transition) {
     super.onTransition(bloc, transition);
-    if (kDebugMode) print('BLOC transition: $transition');
+    debugPrint('BLOC transition: $transition');
   }
 }

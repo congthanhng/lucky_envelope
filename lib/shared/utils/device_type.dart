@@ -4,7 +4,7 @@ enum DeviceType { phone, tablet }
 
 class DeviceInfo{
   static DeviceType getDeviceType() {
-    final data = MediaQueryData.fromWindow(WidgetsBinding.instance.window);
+    final data = MediaQueryData.fromView(WidgetsBinding.instance.window);
     return data.size.shortestSide < 550 ? DeviceType.phone : DeviceType.tablet;
   }
 

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lucky_envolope/app/presentation/blocs/draw/draw_bloc.dart';
 import 'package:lucky_envolope/app/presentation/components/overlays/dialogs/default_dialog.dart';
-import 'package:lucky_envolope/app/utils/num_extension.dart';
+import 'package:lucky_envolope/shared/shelf.dart';
 
 class HistoryBSBody extends StatefulWidget {
   const HistoryBSBody({Key? key}) : super(key: key);

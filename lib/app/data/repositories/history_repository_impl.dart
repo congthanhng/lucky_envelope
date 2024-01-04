@@ -1,9 +1,9 @@
 import 'dart:convert';
 
-import 'package:lucky_envolope/app/core/local_storage/app_local_storage.dart';
-import 'package:lucky_envolope/app/data/datasource/local/hive_storage.dart';
 import 'package:lucky_envolope/app/domain/models/history/history_model.dart';
 import 'package:lucky_envolope/app/domain/repositories/history_repository.dart';
+
+import '../../../shared/shelf.dart';
 
 class HistoryRepositoryImpl implements HistoryRepository{
   final LocalStorage _localStorage = HiveStorage();

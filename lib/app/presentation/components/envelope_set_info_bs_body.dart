@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lucky_envolope/app/domain/models/envelope_model.dart';
 import 'package:lucky_envolope/app/presentation/blocs/envelope_set/envelope_set_bloc.dart';
-import 'package:lucky_envolope/app/utils/device_type.dart';
+import 'package:lucky_envolope/shared/shelf.dart';
 
 class EnvelopeSetInfoBSBody extends StatefulWidget {
   const EnvelopeSetInfoBSBody({Key? key}) : super(key: key);

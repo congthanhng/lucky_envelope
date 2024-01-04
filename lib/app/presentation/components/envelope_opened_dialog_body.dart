@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lucky_envolope/app/domain/models/envelope_model.dart';
 import 'package:lucky_envolope/app/domain/models/history/history_model.dart';
 import 'package:lucky_envolope/app/presentation/blocs/draw/draw_bloc.dart';
-import 'package:lucky_envolope/app/utils/device_type.dart';
+import 'package:lucky_envolope/shared/shelf.dart';
 
 class EnvelopeOpenedDialogBody extends StatefulWidget {
   const EnvelopeOpenedDialogBody({Key? key, required this.model})
