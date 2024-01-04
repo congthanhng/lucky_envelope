@@ -8,9 +8,8 @@ class CustomDraws {
       isScrollControlled: true,
       backgroundColor: Colors.red[400],
       builder: (context) => ConstrainedBox(
-        constraints: BoxConstraints(
-          maxHeight: MediaQuery.of(context).size.height / 1.2
-        ),
+        constraints:
+            BoxConstraints(maxHeight: MediaQuery.of(context).size.height / 1.2),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           // crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -26,28 +25,30 @@ class CustomDraws {
                     'Cài đặt bộ lì xì',
                     style: TextStyle(
                         color: Colors.white,
-                        fontSize: 24,
+                        fontSize: 20,
                         fontWeight: FontWeight.w500),
                   ),
                 ),
                 const Spacer(),
-                InkWell(
-                  borderRadius: BorderRadius.circular(8),
-                  onTap: () {
+                IconButton(
+                  icon: const Icon(
+                    Icons.close_rounded,
+                    size: 32,
+                    color: Colors.white,
+                  ),
+                  onPressed: () {
                     Navigator.pop(context);
                   },
-                  child: const Padding(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
-                    child: Text(
-                      'Đóng',
-                      style: TextStyle(color: Colors.white, fontSize: 20),
-                    ),
-                  ),
-                ),
+                )
               ],
             ),
-            ...body,
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(children: [
+                  ...body,
+                ]),
+              ),
+            ),
             const SizedBox(
               height: 24,
             ),
@@ -120,16 +121,14 @@ class CustomDraws {
     );
   }
 
-  static addNewEnvelope(
-      {required BuildContext context, required Widget body}) {
+  static addNewEnvelope({required BuildContext context, required Widget body}) {
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
       backgroundColor: Colors.red[400],
       builder: (context) => ConstrainedBox(
-        constraints: BoxConstraints(
-            maxHeight: MediaQuery.of(context).size.height / 1.2
-        ),
+        constraints:
+            BoxConstraints(maxHeight: MediaQuery.of(context).size.height / 1.2),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -155,7 +154,8 @@ class CustomDraws {
                     Navigator.pop(context);
                   },
                   child: const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
                     child: Text(
                       'Đóng',
                       style: TextStyle(color: Colors.white, fontSize: 20),
@@ -181,16 +181,14 @@ class CustomDraws {
     );
   }
 
-  static showInfo(
-      {required BuildContext context, required List<Widget> body}) {
+  static showInfo({required BuildContext context, required List<Widget> body}) {
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
       backgroundColor: Colors.red[400],
       builder: (context) => ConstrainedBox(
-        constraints: BoxConstraints(
-            maxHeight: MediaQuery.of(context).size.height / 1.2
-        ),
+        constraints:
+            BoxConstraints(maxHeight: MediaQuery.of(context).size.height / 1.2),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -216,7 +214,8 @@ class CustomDraws {
                     Navigator.pop(context);
                   },
                   child: const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
                     child: Text(
                       'Đóng',
                       style: TextStyle(color: Colors.white, fontSize: 20),

@@ -96,37 +96,60 @@ class _SettingLayoutState extends State<SettingLayout> {
                     right: BorderSide(color: Colors.yellow),
                     left: BorderSide(color: Colors.yellow)),
               ),
-              child: Column(
-                children: [
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  const Center(
-                      child: Text(
-                    'Tổng cộng ',
-                    style: TextStyle(fontSize: 18),
-                  )),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  Center(child: BlocBuilder<SettingBloc, SettingState>(
-                    builder: (context, state) {
-                      var total = state.envelopesData.values.fold(
-                        0,
-                        (previousValue, element) =>
-                            previousValue + element.total,
-                      );
-                      return Text(
-                        total.toMoneyWithoutDecimal(),
-                        style: const TextStyle(
-                            fontSize: 24, fontWeight: FontWeight.w600),
-                      );
-                    },
-                  )),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                ],
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    const Text(
+                      'Tổng cộng:',
+                      style: TextStyle(fontSize: 18),
+                    ),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    Center(child: BlocBuilder<SettingBloc, SettingState>(
+                      builder: (context, state) {
+                        var total = state.envelopesData.values.fold(
+                          0,
+                          (previousValue, element) =>
+                              previousValue + element.total,
+                        );
+                        return Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Text(
+                              total.toMoneyWithoutDecimal(),
+                              style: const TextStyle(
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.black),
+                            ),
+                            const SizedBox(
+                              width: 8,
+                            ),
+                            IconButton(
+                              onPressed: () {
+                                context.read<SettingBloc>().add(SettingReset());
+                              },
+                              icon: const Icon(
+                                Icons.restart_alt_rounded,
+                                color: Colors.white,
+                              ),
+                              tooltip: 'Thiết lập về 0',
+                            )
+                          ],
+                        );
+                      },
+                    )),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                  ],
+                ),
               ),
             ),
             const SizedBox(
@@ -137,7 +160,7 @@ class _SettingLayoutState extends State<SettingLayout> {
                 Expanded(
                   child: OutlinedButton(
                     onPressed: () {
-                      context.read<SettingBloc>().add(SettingReset());
+                      Navigator.of(context).pop();
                     },
                     style: ButtonStyle(
                         side: MaterialStateProperty.all(
@@ -145,7 +168,7 @@ class _SettingLayoutState extends State<SettingLayout> {
                     child: const Padding(
                       padding: EdgeInsets.symmetric(horizontal: 24.0),
                       child: Text(
-                        'Thiết lập lại',
+                        'Huỷ bỏ',
                         textAlign: TextAlign.center,
                         style: TextStyle(color: Colors.white),
                       ),
@@ -166,10 +189,13 @@ class _SettingLayoutState extends State<SettingLayout> {
                           .add(EnvelopeSetGenerated(model));
                       widget.onCreated?.call();
                     },
-                    style: ButtonStyle(elevation: MaterialStateProperty.all(0)),
+                    style: ButtonStyle(
+                        elevation: MaterialStateProperty.all(0),
+                        backgroundColor:
+                            const MaterialStatePropertyAll(Colors.amber)),
                     child: const Text(
-                      'Tạo',
-                      style: TextStyle(fontSize: 20),
+                      'Áp dụng',
+                      style: TextStyle(color: Colors.black),
                     ),
                   ),
                 ),

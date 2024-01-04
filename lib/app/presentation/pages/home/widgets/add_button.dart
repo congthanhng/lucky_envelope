@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../components/overlays/draws/default_draw.dart';
+import 'default_draw.dart';
 import '../../../components/shelf.dart';
 
 class HomeAddButton extends StatelessWidget {

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../blocs/draw/draw_bloc.dart';
-import '../../../components/overlays/draws/default_draw.dart';
+import 'default_draw.dart';
 import '../../../components/shelf.dart';
 
 class HomeHistoryButton extends StatelessWidget {

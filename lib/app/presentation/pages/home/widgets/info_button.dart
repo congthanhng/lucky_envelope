@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../blocs/envelope_set/envelope_set_bloc.dart';
-import '../../../components/overlays/draws/default_draw.dart';
+import 'default_draw.dart';
 import '../../../components/shelf.dart';
 
 class HomeInfoButton extends StatelessWidget {

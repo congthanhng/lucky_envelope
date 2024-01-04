@@ -175,12 +175,14 @@ class _AddEnvelopeBSBodyState extends State<AddEnvelopeBSBody> {
                   .add(SettingQuantityIncreased(denomination.name, quantity));
               Navigator.pop(context);
             },
-            style: ButtonStyle(elevation: MaterialStateProperty.all(0)),
+            style: ButtonStyle(
+                elevation: MaterialStateProperty.all(0),
+                backgroundColor: const MaterialStatePropertyAll(Colors.amber)),
             child: const Padding(
               padding: EdgeInsets.symmetric(horizontal: 24.0),
               child: Text(
                 'Thêm',
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(color: Colors.black),
               ),
             ),
           ),

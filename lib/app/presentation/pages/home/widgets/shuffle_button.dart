@@ -6,7 +6,7 @@ class HomeShuffleButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      tooltip: 'Xáo trộn lại',
+      tooltip: 'Xáo trộn',
       onPressed: () {
         // CustomDraws.showHelpDraw(context: context, body: [
         //   SettingPage(

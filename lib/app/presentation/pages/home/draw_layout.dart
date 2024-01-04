@@ -48,7 +48,7 @@ class _DrawEnvelopeLayoutState extends State<DrawEnvelopeLayout> {
                     ? 2
                     : widget.envelopes.length <= 12
                         ? 3
-                        : 4,
+                        : 3,
             mainAxisSpacing: 8,
             crossAxisSpacing: 8),
         padding: const EdgeInsets.only(bottom: 16, left: 16, right: 16, top: 8),
