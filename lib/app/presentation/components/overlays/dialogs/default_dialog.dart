@@ -1,24 +1,19 @@
 import 'package:flutter/material.dart';
 
-class DefaultDialog{
+class DefaultDialog {
   static BuildContext? _globalContext;
 
-  static initGlobalContext(BuildContext context){
+  static initGlobalContext(BuildContext context) {
     _globalContext = Navigator.of(context, rootNavigator: true).context;
   }
 
-  static void show(
-      BuildContext context, {
-        bool barrierDismissible = false,
-        required Widget body
-      }) {
+  static void show(BuildContext context,
+      {bool barrierDismissible = false, required Widget body}) {
     initGlobalContext(context);
     showDialog(
         context: context,
         barrierDismissible: barrierDismissible,
-
         builder: (context) {
-          var width = MediaQuery.of(context).size.width;
           return body;
         });
   }

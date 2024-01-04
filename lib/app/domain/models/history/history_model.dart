@@ -1,4 +1,4 @@
-import 'package:lucky_envolope/app/domain/models/envelope_model.dart';
+import 'package:lucky_envolope/app/domain/models/envelope/envelope_model.dart';
 
 class HistoryModel {
   final EnvelopeModel envelope;

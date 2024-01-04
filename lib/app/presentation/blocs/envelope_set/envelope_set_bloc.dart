@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
-import 'package:lucky_envolope/app/domain/models/envelope_model.dart';
-import 'package:lucky_envolope/app/domain/models/setting_data.dart';
+import 'package:lucky_envolope/app/domain/models/envelope/envelope_model.dart';
+import 'package:lucky_envolope/app/domain/models/setting/setting_data.dart';
 import 'package:lucky_envolope/app/domain/usecases/setting_usecase.dart';
 import 'package:meta/meta.dart';
 

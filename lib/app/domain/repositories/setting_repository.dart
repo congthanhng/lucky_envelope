@@ -1,5 +1,5 @@
-import 'package:lucky_envolope/app/domain/models/envelope_model.dart';
-import 'package:lucky_envolope/app/domain/models/setting_data.dart';
+import 'package:lucky_envolope/app/domain/models/envelope/envelope_model.dart';
+import 'package:lucky_envolope/app/domain/models/setting/setting_data.dart';
 
 abstract class SettingRepository{
   Future<SettingData?> getSettingData();
