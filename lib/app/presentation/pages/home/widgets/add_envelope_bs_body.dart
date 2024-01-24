@@ -3,8 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lucky_envolope/app/domain/models/denomination/denomination_vn.dart';
 import 'package:lucky_envolope/app/domain/models/envelope/envelope_model.dart';
 import 'package:lucky_envolope/app/presentation/blocs/envelope_set/envelope_set_bloc.dart';
-import 'package:lucky_envolope/app/presentation/pages/setting_page/bloc/setting_bloc.dart';
 import 'package:lucky_envolope/shared/shelf.dart';
+
+import '../../setting/bloc/setting_bloc.dart';
 
 class AddEnvelopeBSBody extends StatefulWidget {
   const AddEnvelopeBSBody({Key? key}) : super(key: key);

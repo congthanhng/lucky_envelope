@@ -5,7 +5,7 @@ import 'package:lucky_envolope/app/presentation/pages/home/widgets/add_button.da
 import 'package:lucky_envolope/app/presentation/pages/home/widgets/history_button.dart';
 
 import '../../components/shelf.dart';
-import '../pages.dart';
+import '../shelf.dart';
 import 'widgets/info_button.dart';
 import 'widgets/reset_button.dart';
 import 'widgets/setting_button.dart';

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lucky_envolope/app/presentation/routes/route_config.dart';
 
 import 'blocs/draw/draw_bloc.dart';
 import 'blocs/envelope_set/envelope_set_bloc.dart';
-import 'pages/home/home_page.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -20,12 +20,13 @@ class MyApp extends StatelessWidget {
           create: (context) => DrawBloc()..add(DrawFetched()),
         )
       ],
-      child: MaterialApp(
-          debugShowCheckedModeBanner: false,
-          theme: ThemeData(
-            primarySwatch: Colors.blue,
-          ),
-          home: const HomePage()),
+      child: MaterialApp.router(
+        routerConfig: AppRouteConfig.config,
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+      ),
     );
   }
 }

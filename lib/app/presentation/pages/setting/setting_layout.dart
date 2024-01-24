@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lucky_envolope/app/presentation/blocs/envelope_set/envelope_set_bloc.dart';
-import 'package:lucky_envolope/app/presentation/pages/setting_page/bloc/setting_bloc.dart';
-import 'package:lucky_envolope/app/presentation/pages/setting_page/widgets/money_cell.dart';
 import 'package:lucky_envolope/gen/assets.gen.dart';
 import 'package:lucky_envolope/shared/shelf.dart';
 
 import '../../../resources/values/constants.dart';
+import 'bloc/setting_bloc.dart';
+import 'widgets/money_cell.dart';
 
 class SettingLayout extends StatefulWidget {
   const SettingLayout({Key? key, this.onCreated}) : super(key: key);
