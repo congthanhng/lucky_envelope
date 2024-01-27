@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:lucky_envolope/gen/assets.gen.dart';
 
 import '../../routes/route_named.dart';
 
@@ -20,6 +21,6 @@ class SplashPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Center(child: Assets.images.envolopes.envolope1.image());
   }
 }
