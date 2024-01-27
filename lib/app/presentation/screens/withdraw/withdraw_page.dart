@@ -1,31 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
-import 'package:lucky_envolope/app/presentation/pages/home/home_layout.dart';
 import 'package:lucky_envolope/app/presentation/routes/route_named.dart';
 
+import 'withdraw_layout.dart';
 
-class HomePage extends StatefulWidget {
-
+class WithdrawPage extends StatefulWidget {
   static routeConfig({List<RouteBase>? routes}) => GoRoute(
-      name: RouteNamed.splash.named,
-      path: RouteNamed.splash.path,
+      name: RouteNamed.withdraw.named,
+      path: RouteNamed.withdraw.path,
       onExit: (context) {
         //TODO: implement confirm before exit
         return false;
       },
       redirect: (context, state) {},
       pageBuilder: (context, state) =>
-      const NoTransitionPage(child: HomePage()),
+      const NoTransitionPage(child: WithdrawPage()),
       routes: routes ?? []);
 
-  const HomePage({Key? key}) : super(key: key);
+  const WithdrawPage({Key? key}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<WithdrawPage> createState() => _WithdrawPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _WithdrawPageState extends State<WithdrawPage> {
   @override
   void initState() {
     SystemChrome.setPreferredOrientations([
@@ -46,8 +45,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.red[300],
-      body: const SafeArea(
-          child: HomeLayout()),
+      body: const SafeArea(child: WithdrawLayout()),
     );
   }
 }

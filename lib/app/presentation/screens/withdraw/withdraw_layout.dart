@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lucky_envolope/app/presentation/blocs/envelope_set/envelope_set_bloc.dart';
-import 'package:lucky_envolope/app/presentation/pages/home/widgets/add_button.dart';
-import 'package:lucky_envolope/app/presentation/pages/home/widgets/history_button.dart';
+import '../config/setting_page.dart';
+import 'components/add_button.dart';
+import 'components/history_button.dart';
+import 'components/info_button.dart';
+import 'components/reset_button.dart';
+import 'components/setting_button.dart';
+import 'components/shuffle_button.dart';
+import 'draw_layout.dart';
 
-import '../../components/shelf.dart';
-import '../shelf.dart';
-import 'widgets/info_button.dart';
-import 'widgets/reset_button.dart';
-import 'widgets/setting_button.dart';
-import 'widgets/shuffle_button.dart';
-
-class HomeLayout extends StatelessWidget {
-  const HomeLayout({super.key});
+class WithdrawLayout extends StatelessWidget {
+  const WithdrawLayout({super.key});
 
   @override
   Widget build(BuildContext context) {

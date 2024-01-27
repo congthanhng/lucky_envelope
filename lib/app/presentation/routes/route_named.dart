@@ -1,11 +1,6 @@
-enum RouteNamed{
-  splash('splash','/'),
-  home('home','home'),
-  withdraw('withdraw','withdraw/:setId'),
-  config('config','config/:setId')
-  ;
-
-  const RouteNamed(this.named,this.path);
-  final String named;
-  final String path;
+class RouteNamed {
+  static const splash = (named: 'splash', path: '/');
+  static const home = (named: 'home', path: '/home');
+  static const withdraw = (named: 'withdraw', path: 'withdraw/:setId');
+  static const config = (named: 'config', path: 'config/:setId');
 }

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:lucky_envolope/app/presentation/pages/home/widgets/reset_dialog.dart';
 
 import '../../../blocs/envelope_set/envelope_set_bloc.dart';
 import '../../../components/shelf.dart';
+import 'reset_dialog.dart';
 
 class HomeResetButton extends StatelessWidget {
   const HomeResetButton({super.key});

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:lucky_envolope/app/presentation/routes/route_named.dart';
+
+import '../../routes/route_named.dart';
 
 class SplashPage extends StatelessWidget {
   static routeConfig({List<RouteBase>? routes}) => GoRoute(

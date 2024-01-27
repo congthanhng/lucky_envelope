@@ -5,7 +5,7 @@ publish_to: 'none'
 version: 1.0.1+2
 
 environment:
-  sdk: '>=2.18.6 <3.0.0'
+  sdk: ">=3.2.0 <4.0.0"
 
 dependencies:
   flutter:
@@ -28,6 +28,7 @@ dev_dependencies:
   flutter_lints: ^2.0.0
   hive_generator: ^2.0.0
   flutter_launcher_icons: 0.11.0
+#  go_router_builder: ^2.4.1
 
 flutter:
   uses-material-design: true
