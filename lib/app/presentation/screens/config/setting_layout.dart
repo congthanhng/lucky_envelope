@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:lucky_envolope/app/presentation/blocs/envelope_set/envelope_set_bloc.dart';
-import 'package:lucky_envolope/gen/assets.gen.dart';
-import 'package:lucky_envolope/shared/shelf.dart';
+import 'package:lucky_envolope/app/presentation/shelf.dart';
+
 
 import '../../../resources/values/constants.dart';
 import 'bloc/setting_bloc.dart';

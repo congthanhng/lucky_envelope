@@ -30,6 +30,18 @@ dev_dependencies:
   flutter_launcher_icons: ^0.13.1
 #  go_router_builder: ^2.4.1
 
+flutter_gen:
+  output: lib/app/presentation/gen/ # Optional (default: lib/gen/)
+#  line_length: 80 # Optional (default: 80)
+  # Optional
+  integrations:
+    flutter_svg: true
+    flare_flutter: true
+    rive: true
+    lottie: true
+#  colors:
+#    inputs:
+#      - assets/color/colors.xml
 flutter:
   uses-material-design: true
   assets:
