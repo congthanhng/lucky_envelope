@@ -5,9 +5,24 @@
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
-// ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal
+// ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal,deprecated_member_use
 
 import 'package:flutter/widgets.dart';
+
+class $AssetsIconGen {
+  const $AssetsIconGen();
+
+  /// File path: assets/icon/ic_loading.png
+  AssetGenImage get icLoading =>
+      const AssetGenImage('assets/icon/ic_loading.png');
+
+  /// File path: assets/icon/logo_logo_up.png
+  AssetGenImage get logoLogoUp =>
+      const AssetGenImage('assets/icon/logo_logo_up.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [icLoading, logoLogoUp];
+}
 
 class $AssetsImagesGen {
   const $AssetsImagesGen();
@@ -15,6 +30,17 @@ class $AssetsImagesGen {
   $AssetsImagesDenominationsGen get denominations =>
       const $AssetsImagesDenominationsGen();
   $AssetsImagesEnvolopesGen get envolopes => const $AssetsImagesEnvolopesGen();
+}
+
+class $AssetsLogoGen {
+  const $AssetsLogoGen();
+
+  /// File path: assets/logo/logo_logo_up.png
+  AssetGenImage get logoLogoUp =>
+      const AssetGenImage('assets/logo/logo_logo_up.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [logoLogoUp];
 }
 
 class $AssetsImagesDenominationsGen {
@@ -146,7 +172,9 @@ class $AssetsImagesEnvolopesGen {
 class Assets {
   Assets._();
 
+  static const $AssetsIconGen icon = $AssetsIconGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
+  static const $AssetsLogoGen logo = $AssetsLogoGen();
 }
 
 class AssetGenImage {
@@ -207,7 +235,16 @@ class AssetGenImage {
     );
   }
 
-  ImageProvider provider() => AssetImage(_assetName);
+  ImageProvider provider({
+    AssetBundle? bundle,
+    String? package,
+  }) {
+    return AssetImage(
+      _assetName,
+      bundle: bundle,
+      package: package,
+    );
+  }
 
   String get path => _assetName;
 

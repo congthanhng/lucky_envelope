@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:lucky_envolope/app/presentation/components/loading/app_loading.dart';
 import 'package:lucky_envolope/gen/assets.gen.dart';
 
 import '../../routes/route_named.dart';
 
+//TODO: build baseScreen
 class SplashPage extends StatelessWidget {
   static routeConfig({List<RouteBase>? routes}) => GoRoute(
       name: RouteNamed.splash.named,
@@ -21,6 +23,12 @@ class SplashPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: Assets.images.envolopes.envolope1.image());
+    return const Scaffold(body: AppLoading());
+
+    return Scaffold(
+        body: Center(
+            child: SizedBox.fromSize(
+                size: Size.fromWidth(MediaQuery.sizeOf(context).width / 3),
+                child: Assets.icon.logoLogoUp.image())));
   }
 }
