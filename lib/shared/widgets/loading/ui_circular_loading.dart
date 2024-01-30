@@ -37,10 +37,10 @@ class _UICircularLoadingState extends State<UICircularLoading>
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: widget.width,
-      height: widget.height,
-      child: Center(
+    return Center(
+      child: SizedBox(
+        width: widget.width,
+        height: widget.height,
         child: RotationTransition(turns: _animation, child: widget.child),
       ),
     );
