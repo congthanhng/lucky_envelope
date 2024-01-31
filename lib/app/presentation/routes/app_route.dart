@@ -5,6 +5,7 @@ import 'package:lucky_envolope/app/presentation/screens/shelf.dart';
 
 class AppRoute {
   static final config = GoRouter(
+
       // errorPageBuilder: (context, state) {
       //   //TODO: implement error builder
       // },
