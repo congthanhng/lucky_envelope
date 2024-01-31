@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class UICircularLoading extends StatefulWidget {
-  const UICircularLoading(
+class XCircularLoading extends StatefulWidget {
+  const XCircularLoading(
       {super.key, this.width = 120, this.height = 120, required this.child});
 
   ///Default is 120
@@ -13,10 +13,10 @@ class UICircularLoading extends StatefulWidget {
   final Widget child;
 
   @override
-  State<UICircularLoading> createState() => _UICircularLoadingState();
+  State<XCircularLoading> createState() => _XCircularLoadingState();
 }
 
-class _UICircularLoadingState extends State<UICircularLoading>
+class _XCircularLoadingState extends State<XCircularLoading>
     with TickerProviderStateMixin {
   late final AnimationController _controller = AnimationController(
     vsync: this,
