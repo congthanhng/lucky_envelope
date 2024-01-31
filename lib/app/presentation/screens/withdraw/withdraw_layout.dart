@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lucky_envolope/app/presentation/blocs/envelope_set/envelope_set_bloc.dart';
-import '../config/setting_page.dart';
+import 'package:lucky_envolope/app/presentation/screens/shelf.dart';
 import 'components/add_button.dart';
 import 'components/history_button.dart';
 import 'components/info_button.dart';

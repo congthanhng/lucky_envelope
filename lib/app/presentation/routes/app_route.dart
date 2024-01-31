@@ -16,7 +16,7 @@ class AppRoute {
       observers: <NavigatorObserver>[RouteObserver<PageRoute>()],
       initialLocation: RouteNamed.splash.path,
       routes: [
-        SplashPage.routeConfig(),
+        SplashScreen.routeConfig(),
         HomeScreen.routeConfig(
             routes: [WithdrawPage.routeConfig(), SettingPage.routeConfig()]),
       ]);

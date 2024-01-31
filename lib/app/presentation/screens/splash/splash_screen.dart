@@ -1,11 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
-import '../../routes/route_named.dart';
+import '../../shelf.dart';
 import 'splash_view.dart';
 
 //TODO: build baseScreen
-class SplashPage extends StatelessWidget {
+class SplashScreen extends StatelessWidget {
   static routeConfig({List<RouteBase>? routes}) => GoRoute(
       name: RouteNamed.splash.named,
       path: RouteNamed.splash.path,
@@ -15,10 +13,10 @@ class SplashPage extends StatelessWidget {
       },
       redirect: (context, state) {},
       pageBuilder: (context, state) =>
-          const NoTransitionPage(child: SplashPage()),
+          const NoTransitionPage(child: SplashScreen()),
       routes: routes ?? []);
 
-  const SplashPage({super.key});
+  const SplashScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

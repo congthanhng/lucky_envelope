@@ -8,8 +8,8 @@ import 'setting_layout.dart';
 
 class SettingPage extends StatefulWidget {
   static routeConfig({List<RouteBase>? routes}) => GoRoute(
-      name: RouteNamed.config.named,
-      path: RouteNamed.config.path,
+      name: RouteNamed.setting.named,
+      path: RouteNamed.setting.path,
       onExit: (context) {
         //TODO: implement confirm before exit
         return false;
