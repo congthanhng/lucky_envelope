@@ -5,6 +5,10 @@ class SplashView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const UILoading();
+    return Scaffold(
+        body: Center(
+            child: SizedBox(
+                width: MediaQuery.sizeOf(context).width / 3,
+                child: Assets.icon.logoLogoUp.image())));
   }
 }
